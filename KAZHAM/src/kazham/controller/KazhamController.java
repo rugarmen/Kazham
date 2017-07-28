@@ -30,6 +30,8 @@ import kazham.service.UtilService;
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import commons.framework.BaseController;
@@ -40,13 +42,15 @@ import commons.framework.BaseController;
  * 
  * @author Rimac Seguros - David Argumé Berrocal
  */
+
+@Controller
 public class KazhamController extends BaseController {
 
 	private Logger logger = Logger.getLogger(KazhamController.class.getName());
-	UtilService utilService = UtilService.getInstance();
-	ResourceBundle resources = ResourceBundle.getBundle("configuracion");
+//	UtilService utilService = UtilService.getInstance();
+//	ResourceBundle resources = ResourceBundle.getBundle("configuracion");
 //	IdentificacionWebDAO imanager = new IdentificacionWebDAO();
-	private InisesionService inisesionService = InisesionService.getInstance();
+//	private InisesionService inisesionService = InisesionService.getInstance();
 
 	public ModelAndView buscar(HttpServletRequest arg0, HttpServletResponse arg1) {
 		return null;
@@ -59,38 +63,28 @@ public class KazhamController extends BaseController {
 	public ModelAndView save(HttpServletRequest arg0, HttpServletResponse arg1) {
 		return null;
 	}
-
-	public ModelAndView obtConstante(HttpServletRequest request,
+	
+	@RequestMapping("/guardarDato")
+	public String guardarDato(HttpServletRequest request,
 			HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
-		LstConstante lstConstante;
-
-		try {
-			lstConstante = new LstConstante(request.getParameterMap());
-			
-			utilService.obtConstante(lstConstante);
-
-			this.escribirTextoSalida(response, commons.web.UtilWeb.objectToJson(
-					lstConstante.getCursor().get(0), null, "sas.bean.LstConstanteCursor"));
-
-		} catch (RuntimeException e) {
-			logger.error("[obtConstante] : " + e.getMessage());
-			this.escribirTextoSalida(response,commons.mapper.Utils.getErrorMessage(e));
-			//e.printStackTrace(); //SAS20151119
-
-		} catch (Exception e) {
-			logger.error("[obtConstante] : " + e.getMessage());
-			//e.printStackTrace(); //SAS20151119
-
-		}
-		return new ModelAndView();
-	}
+	
+		String txtName = (request.getParameter("name") != null?request.getParameter("name").toString():"");
+		String txtEmail = (request.getParameter("email") != null?request.getParameter("email").toString():"");
+		String txtPassword = (request.getParameter("password") != null?request.getParameter("password").toString():"");
 		
+		System.out.println(txtName);
+		System.out.println(txtEmail);
+		System.out.println(txtPassword);
+		return "Llegó al controlador!!!";
+	}
+	
 	/**
 	 * Método que permite obtener el usuario logueado a la aplicación
 	 * @param request permite obtener el contexto del aplicativo
 	 * @param response Permite enviar la respuesta
 	 */
+	@RequestMapping("/obtenerUsuarioLogueado")
 	public String obtenerUsuarioLogueado(HttpServletRequest request,
 			HttpServletResponse response) {
 		String usuarioLogueado = null;

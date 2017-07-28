@@ -16,18 +16,19 @@ import kazham.commons.Constants;
 
 import org.apache.log4j.Logger; 
 import org.apache.log4j.PropertyConfigurator;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 //import sas.seguridad.commons.ConfigurationProperties;
 
 import commons.framework.Service;
 
-public class InicioAppServlet extends HttpServlet {
+public class KazhamServlet extends HttpServlet {
 	
-	private static Logger logger = Logger.getLogger(InicioAppServlet.class.getName());
+	private static Logger logger = Logger.getLogger(KazhamServlet.class.getName());
 		
 	private static ResourceBundle resources = ResourceBundle.getBundle("configuracion");
 	
-	public InicioAppServlet() {
+	public KazhamServlet() {
 		super();
 	}
 
@@ -50,10 +51,9 @@ public class InicioAppServlet extends HttpServlet {
 
 	public void init() throws ServletException {
 		ServletContext servletContext = super.getServletContext();
-		String rutaLog4j = null;
+//		String rutaLog4j = null;
 		Context context = null;
 
-		System.out.print("[---------INICIADO APLICACION DE SAS---------]");
 		
 		try{
 		
@@ -66,7 +66,7 @@ public class InicioAppServlet extends HttpServlet {
 //			System.out.print("[rutaLog4j] " + rutaLog4j);
 //			PropertyConfigurator.configure(rutaLog4j);
 			
-			System.out.print("[INICIO PARAMETROS DE CONTEXTO FINALIZADO]");
+			System.out.print("[INICIO KazhamServlet]");
 			
 		}catch(Exception e){
 			logger.error("Error en el inicio de los parametros de la aplicacion", e);
@@ -76,9 +76,16 @@ public class InicioAppServlet extends HttpServlet {
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response){
 		response.setContentType("text/html");
+		this.grabarRegistro(request, response);
 	}
 
 	public void getUsuarioLogueado(HttpServletRequest request, HttpServletResponse response){
 		System.out.println("RGARCIAM");
 	}
+	
+	@RequestMapping("/grabarRegistro")
+	public void grabarRegistro(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("Grabar");
+	}
+	
 }

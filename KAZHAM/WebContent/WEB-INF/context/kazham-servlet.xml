@@ -21,15 +21,12 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>	
-				<prop key="/util.do">utilController</prop>	
+				
 				<prop key="/kazham.do">kazhamController</prop>				
 			</props>
 		</property>
 	</bean>
 
-	<bean id="utilController" class="kazham.controller.UtilController">
-		<property name="methodNameResolver" ref="methodNameResolver" />
-	</bean>	
 	<bean id="kazhamController" class="kazham.controller.KazhamController">
 		<property name="methodNameResolver" ref="methodNameResolver" />
 	</bean>

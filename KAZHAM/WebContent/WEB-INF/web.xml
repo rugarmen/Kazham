@@ -45,19 +45,19 @@
     <url-pattern>/close.do</url-pattern>
   </servlet-mapping>
   
-<!--   
+   
   <servlet>
   	<description>
   	</description>
-  	<display-name>AcuseRecibo</display-name>
-  	<servlet-name>AcuseRecibo</servlet-name>
-  	<servlet-class>kazham.servlet.AcuseRecibo</servlet-class>
+  	<display-name>KazhamServlet</display-name>
+  	<servlet-name>KazhamServlet</servlet-name>
+  	<servlet-class>kazham.servlet.KazhamServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>AcuseRecibo</servlet-name>
-  	<url-pattern>/AcuseRecibo</url-pattern>
+  	<servlet-name>KazhamServlet</servlet-name>
+  	<url-pattern>/kazhamServlet.do</url-pattern>
   </servlet-mapping>
--->
+
 
   <filter>
 		<filter-name>paginaInicioFilter</filter-name>
