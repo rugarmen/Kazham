@@ -8,7 +8,10 @@ import commons.mapper.ResourceManager;
 public class Usuario {
 
 	private String ideusuario;
-	private int ideacuerdo;
+	private String name;
+	private String email;
+	private String password;
+	
 	 private List cursor;
 	  public Usuario() {}
 
@@ -24,11 +27,37 @@ public class Usuario {
 		this.ideusuario = ideusuario;
 	}
 
-	public int getIdeacuerdo() {
-		return ideacuerdo;
+	public String getName() {
+		return name;
 	}
 
-	public void setIdeacuerdo(int ideacuerdo) {
-		this.ideacuerdo = ideacuerdo;
+	public void setName(String name) {
+		this.name = name;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List getCursor() {
+		return cursor;
+	}
+
+	public void setCursor(List cursor) {
+		this.cursor = cursor;
+	}
+
+	
 }

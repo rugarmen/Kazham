@@ -1,10 +1,12 @@
 package kazham.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,16 +22,19 @@ import kazham.bean.MntConstante;
 import kazham.bean.MntParametro;
 import kazham.bean.MntTipparametro;
 import kazham.bean.RegUsuarioxOpcion;
+import kazham.bean.Usuario;
 import kazham.bean.ValCfgTippar;
 import kazham.commons.CommonUtil;
 import kazham.commons.Constants;
 import kazham.inisesion.bean.BsqUsuario;
 import kazham.inisesion.commons.CommonsHelper;
 import kazham.inisesion.service.InisesionService;
+import kazham.service.KazhamService;
 import kazham.service.UtilService;
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,10 +52,9 @@ import commons.framework.BaseController;
 public class KazhamController extends BaseController {
 
 	private Logger logger = Logger.getLogger(KazhamController.class.getName());
-//	UtilService utilService = UtilService.getInstance();
-//	ResourceBundle resources = ResourceBundle.getBundle("configuracion");
-//	IdentificacionWebDAO imanager = new IdentificacionWebDAO();
-//	private InisesionService inisesionService = InisesionService.getInstance();
+	
+	@Autowired
+	KazhamService kazhamService = KazhamService.getInstance();
 
 	public ModelAndView buscar(HttpServletRequest arg0, HttpServletResponse arg1) {
 		return null;
@@ -65,19 +69,37 @@ public class KazhamController extends BaseController {
 	}
 	
 	@RequestMapping("/guardarDato")
-	public ModelAndView guardarDato(HttpServletRequest request,
+	public void guardarDato(HttpServletRequest request,
 			HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
 	
 		String txtName = (request.getParameter("name") != null?request.getParameter("name").toString():"");
 		String txtEmail = (request.getParameter("email") != null?request.getParameter("email").toString():"");
 		String txtPassword = (request.getParameter("password") != null?request.getParameter("password").toString():"");
-		
+		String sesIdeusuario = (request.getSession().getAttribute(Constants.SESSION_USER) != null? request.getSession().getAttribute(Constants.SESSION_USER).toString():"");
 		System.out.println(txtName);
 		System.out.println(txtEmail);
 		System.out.println(txtPassword);
 		
-		return new ModelAndView();
+		Usuario param = new Usuario();
+		param.setName(txtName);
+		param.setEmail(txtEmail);
+		param.setPassword(txtPassword);
+		param.setIdeusuario(sesIdeusuario);
+		
+		kazhamService.guardarDato(param);
+		
+		try {
+			request.getRequestDispatcher("/index.html").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		return null;
 	}
 	
 	/**
