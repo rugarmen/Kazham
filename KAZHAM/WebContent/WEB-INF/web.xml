@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>SAS</display-name>
+  <servlet>
+    <servlet-name>SpringServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/context/kazham-servlet.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SpringServlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping> 
+
+	<servlet>
+    	<description>InicioAppServlet</description>
+    	<display-name>InicioAppServlet</display-name>
+    	<servlet-name>InicioAppServlet</servlet-name>
+    	<servlet-class>kazham.servlet.InicioAppServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	
+  	<servlet-mapping>
+    	<servlet-name>InicioAppServlet</servlet-name>
+    	<url-pattern>/servlet/InicioAppServlet</url-pattern>
+  	</servlet-mapping>
+  	
+  <servlet>
+    <servlet-name>InitializationServlet</servlet-name>
+    <servlet-class>kazham.servlet.InitializationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitializationServlet</servlet-name>
+    <url-pattern>/inicio.do</url-pattern>
+  </servlet-mapping> 
+ 
+  <servlet>
+    <servlet-name>CloseSessionServlet</servlet-name>
+    <servlet-class>kazham.servlet.CloseSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CloseSessionServlet</servlet-name>
+    <url-pattern>/close.do</url-pattern>
+  </servlet-mapping>
+  
+<!--   
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AcuseRecibo</display-name>
+  	<servlet-name>AcuseRecibo</servlet-name>
+  	<servlet-class>kazham.servlet.AcuseRecibo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AcuseRecibo</servlet-name>
+  	<url-pattern>/AcuseRecibo</url-pattern>
+  </servlet-mapping>
+-->
+
+  <filter>
+		<filter-name>paginaInicioFilter</filter-name>
+		<filter-class>kazham.filter.PaginaInicioFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>paginaInicioFilter</filter-name>
+		<url-pattern>/index.html</url-pattern>
+	</filter-mapping>
+	
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+ 
+</web-app>

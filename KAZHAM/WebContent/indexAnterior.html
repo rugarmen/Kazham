@@ -1,0 +1,126 @@
+<!-- ======================================================================================================
+* Nro       Version 			Fecha 			Autor 		Comentario
+* =======================================================================================================
+* 	  
+* 1         1.0   				26/07/2017		KAZHAM		Versión Inicial.
+* =======================================================================================================
+*/
+-->
+
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <title>KAZHAM</title>
+
+    <script type="text/javascript">
+    	document.getElementById('loading-msg').innerHTML = 'Carga Finalizada...';
+    	document.getElementById('loading-library').style.display = 'none';
+    </script>
+    
+    <script type="text/javascript" src="kazham/main.js">               </script>
+   
+	<!-- INI M.64776.1 --> 
+
+	
+    <script type="text/javascript" src="KAZHAM"></script>
+	
+    <script type="text/javascript">
+
+        /*MyApp.on({
+            'beforeinit' : function(){
+                    APPID = 1;
+                    APPDESC = "Kazham";
+                },
+            'ready': function(){
+            	var myapp_cfg = {closable:true,width:785,height:570,maximized:false,panel:'Dialog',cfg:{consulta:'N'}};
+            }
+        });*/
+        
+        /*function crearInstancia() {
+          	var urlClose = 'kazham.do?method=crearIntanciaSession';
+			
+			httpGet(urlClose);
+		}
+		
+		function eliminarInstancia() {
+			var numSessiones = 0;
+          	var urlClose = 'kazham.do?method=eliminarIntanciaSession';
+			
+			numSessiones = httpGet(urlClose);
+			
+			if(numSessiones <= 0) {
+				logOut();
+			}
+		}
+		
+		function logOut() {
+          	var urlClose = 'close.do?SCHEME=http:&SERVERNAME='+location.hostname+'&SERVERPORT='+location.port;
+			
+			httpGet(urlClose);
+		}
+		
+		function httpGet(url) {
+		    var xmlHttp = null;
+		
+		    //   xmlHttp = new XMLHttpRequest();
+		    // CCF 22/10/2013
+		    if (window.XMLHttpRequest)
+  			{// code for IE7+, Firefox, Chrome, Opera, Safari
+  			xmlHttp=new XMLHttpRequest();
+  			}
+			else
+  			{// code for IE6, IE5
+  			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+		    
+		    
+		    xmlHttp.open( "GET", url, false );
+		    xmlHttp.send( null );
+		    return xmlHttp.responseText;
+	    }
+	    
+	    function validarUsuarioCookie() {
+	    	var userCookie = obtenerUserCookie();	    	
+	    	if(userCookie==null || userCookie=='') {
+				window.location='login.jsp';
+			}
+	    }
+	    
+	    function obtenerUserCookie() {
+	        var userCookie='';
+			var urlUserLogin='kazham.do?method=obtenerUsuarioLogueado';
+			                				
+			userCookie = httpGet(urlUserLogin);
+			
+			return userCookie;
+		}
+		
+		validarUsuarioCookie();		
+		*/
+    </script>
+    </head> 
+
+    <body scroll="no">
+    <b> Página Inicial </b>
+     <!--  RTC72229 GC 46163 ini 
+        <div id="x-desktop" style="display:none;">
+        </div>
+	
+	   	<div style="position:absolute;top:8px;left:226px;">
+	   		<div id="idDivTitle" style="sans-serif;color:#555555;font-size:35px;font-weight:bold;"></div>
+	   	</div>
+	   	<div style="position:absolute;top:64px;left:301px;">
+	   		<div id="idDivUser" style="letter-spacing:1px;font-family:arial,sans-serif;color:#ffffff;font-size:11px;font-weight:bold;"></div>
+	   	</div>	
+	     	
+	   	   <div style="position:absolute;top:60px;right:110px;">
+	   		<div id="idDivClave"></div>
+	   	</div>
+	    	   	
+	   	<div style="position:absolute;top:60px;right:10px;">
+	   		<div id="idDivButton"></div>
+	   	</div> -->
+    </body>
+</html>

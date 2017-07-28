@@ -1,0 +1,223 @@
+
+body {
+    background: url("../images/fondo4.png") repeat scroll 0 0 transparent;
+    font-family: Arial,Verdana,sans-serif;
+    text-align: center;
+    
+}
+ul, div, fieldset, form, h1, h2, h3, h4, h5, html, img, input, li, object, p, pre, span, body, blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+.loading {
+	text-align:center;
+	vertical-align:middle;
+	opacity:0.4;
+	filter:alpha(opacity=40);
+	background-color:white;
+	visibility:visible;
+	display:none;
+	z-index:1000;
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+}
+
+.loading_img {
+	padding-top:200px; 
+	width:100px;
+	height:100px;
+}
+
+.table_content {
+	background: none repeat scroll 0 0 #FFFFFF;
+	width: 773px;
+	height: 500px;
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.table_content_tr {
+	height: 5%;
+}
+
+.table_content_tr_central {
+	height: 95%;
+}
+
+.linea_header {
+    background: url("../images/header.png") no-repeat;
+    color: #DD2222;
+	vertical-align: top;
+    height: 100px;
+}
+
+.linea_footer {
+    background: url("../images/footer.png") repeat-x scroll 0 50% #DD2222;
+    color: #DD2222;
+    height: 36px;
+}
+
+.linea_center {
+    /*background: url("../images/footer.png") repeat-x scroll 0 50% #DD2222;*/
+    color: #DD2222;
+    height: 8px;
+}
+
+.table_content_td {
+	width: 1%;
+	vertical-align: top;
+}
+
+.table_content_td_central {
+	width: 98%;
+	vertical-align: top;
+	text-align:center;
+}
+
+.table_banner_tr {
+	height: 120px;
+}
+
+.table_banner_td {
+	text-align: left;
+	width: 100%;
+}
+
+h2 {
+    color: #1C2A47;
+    font-size: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.table_content_secundario {
+	margin-top: 20px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	width: 70%;
+	height: 250px;
+	text-align:center;
+	border-radius: 4px 4px 4px 4px;
+}
+
+.table_content_secundario_out {
+	margin-top: 20px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	width: 100%;
+	height: 250px;
+	text-align:center;
+	border-radius: 4px 4px 4px 4px;
+}
+
+.table_content_secundario_td {
+	padding: 12px;
+	vertical-align: top;
+	text-align:center;
+}
+
+.table_form {	
+    width: 100%;
+}
+
+.table_form_td_line {
+    background: url("../images/line.png") repeat-x scroll 0 50% #F2F2F2;
+    color: #F2F2F2;
+    height: 0.5px;
+}
+
+.table_form_td_linewhite {
+    background: url("../images/line_white.png") repeat-x scroll 0 50% #FFFFFF;
+    color: #FFFFFF;
+    height: 3px;
+}
+
+.table_form_td_central {
+	border: 1px solid #CCCCCC;
+	background-color: #DDDDDD;
+    height: 200px;
+}
+
+img {
+    border: 0 none;
+}
+
+.frm_login {	
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin: 0px;
+    width: 100%;
+}
+
+.td_label {	
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 3px;
+    padding-bottom: 2.5px;
+    font-size: 13px;
+}
+
+.td_field {	
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.td_button {	
+    padding-top: 15px;
+    text-align: center;
+}
+
+.cl_input {
+    border-color: #BBBBBB;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    text-align: center;
+	width: 150px;
+	border-style: solid;
+    vertical-align: middle;
+}
+
+label {
+    color: #DD2222;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.btn_ingresar {
+    background: url("../images/button_login.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 60%;
+    height: 22px;
+    width: 90px;
+    margin: 0;
+    padding: 0px;
+}
+.btn_continuar {
+    background: url("../images/button_continuar.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-size: 60%;
+    height: 30px;
+    width: 90px;
+    margin: 0;
+    padding: 0px;
+}
+
