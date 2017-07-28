@@ -65,7 +65,7 @@ public class KazhamController extends BaseController {
 	}
 	
 	@RequestMapping("/guardarDato")
-	public String guardarDato(HttpServletRequest request,
+	public ModelAndView guardarDato(HttpServletRequest request,
 			HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
 	
@@ -76,7 +76,8 @@ public class KazhamController extends BaseController {
 		System.out.println(txtName);
 		System.out.println(txtEmail);
 		System.out.println(txtPassword);
-		return "Llegó al controlador!!!";
+		
+		return new ModelAndView();
 	}
 	
 	/**
