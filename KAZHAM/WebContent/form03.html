@@ -1,0 +1,32 @@
+﻿<html>
+
+<head>
+    <!-- Add your own theme custom JS-->
+    <script type="text/javascript" src="fwk\vue-dev\dist\vue.min.js"></script>
+    
+</head>
+
+<body>
+
+    <div id="texto">
+        <span>TEXTO: {{mensaje}}</span>
+        <input v-model="mensaje"></input>    
+    </div>
+--------------------------------------z-----------------------------------------------------------------------
+  
+
+    <script>
+   
+
+    var vm01 = new Vue({
+      el: '#texto',
+      data: {
+        mensaje: 'xxx'
+      }
+    })
+
+    </script>
+
+</body>
+
+</html>
