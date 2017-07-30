@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kazham.bean.Informacion;
 import kazham.bean.LstConstante;
 import kazham.bean.PeriodoMes;
 
@@ -118,15 +119,15 @@ public class KazhamController extends BaseController {
 	public ModelAndView listarPeriodo(HttpServletRequest request,
 			HttpServletResponse response) {
 		response.setContentType("text/html; charset=UTF-8");
-		PeriodoMes periodomes;
+		PeriodoMes param;
 
 		try {
-			periodomes = new PeriodoMes(request.getParameterMap());
-			kazhamService.listarPeriodo(periodomes);
+			param = new PeriodoMes(request.getParameterMap());
+			kazhamService.listarPeriodo(param);
 
-//			String listaPeriodo = commons.web.UtilWeb.listaToArrayJavaScript(periodomes.getCursor(), null,"kazham.bean.PeriodoMes");
-			String listaPeriodo = "[['01','Enero'],['02','Febrero']]";
-			this.escribirTextoSalida(response, listaPeriodo);
+			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,PeriodoMes.class.getName());
+//			String listaParam = "[['01','Enero'],['02','Febrero']]";
+			this.escribirTextoSalida(response, listaParam);
 
 		} catch (RuntimeException e) {
 			logger.error("[listarPeriodo] : " + e.getMessage());
@@ -138,5 +139,35 @@ public class KazhamController extends BaseController {
 		return new ModelAndView();
 	}
 
+	@RequestMapping("/grabarInformacion")
+	public void grabarInformacion(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+	
+		Informacion param;
+		
+		try {
+			param = new Informacion(request.getParameterMap());
+			
+			kazhamService.grabarInformacion(param);
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+//		try {
+//			request.getRequestDispatcher("/index.html").forward(request, response);
+//		} catch (ServletException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+//		return null;
+	}
+	
 	
 }

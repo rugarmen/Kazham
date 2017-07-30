@@ -12,24 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import kazham.bean.ListaCorreoGenerico;
-import kazham.bean.ListaLogAuditoria;
-import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
-import kazham.bean.LstLog;
 import kazham.bean.LstParametro;
-import kazham.bean.LstTipparametro;
 import kazham.bean.MntArchivoblob;
-import kazham.bean.MntCasillaCorreo;
 import kazham.bean.MntConstante;
-import kazham.bean.MntMailLogCursor;
 import kazham.bean.MntParametro;
-import kazham.bean.MntTipparametro;
-import kazham.bean.RegUsuarioxOpcion;
-import kazham.bean.TipoCambio;
+
 import kazham.bean.Usuario;
-import kazham.bean.ValCfgTippar;
 import kazham.commons.Constants;
 import kazham.dao.UtilDao;
 
@@ -165,85 +155,7 @@ public class UtilDaoImp implements UtilDao {
 	    }
   }
   
-  public void listaParametro(Connection conn, Periodo param) {
-    CallableStatement cs=null;
-    ResultSet rs=null;
-
-    try {
-      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN.SP_LISTA_PARAMETRO(?,?)}");
-      commons.util.JdbcHelper.setString(cs, 1, param.getIdetippar());
-      cs.registerOutParameter(2, OracleTypes.CURSOR);
-      cs.execute();
-      rs = (ResultSet)cs.getObject(2);
-      param.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.ListaParametroCursor", rs));
-
-
-    } catch (SQLException e) {
-      logger.error("[listaParametro] : " + "Conexion a BD");
-      throw new RuntimeException("" + e, e);
-
-    } finally {
-      JdbcHelper.close(null, cs, null, null, rs);
-
-    }
-  }
-
-  public void lstTipparametro(Connection conn, LstTipparametro param) {
-    CallableStatement cs=null;
-    ResultSet rs=null;
-
-    try {
-      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN.sp_lst_tipparametro(?,?,?,?,?,?)}");
-      commons.util.JdbcHelper.setString(cs, 1, param.getIdetippar());
-      commons.util.JdbcHelper.setString(cs, 2, param.getDescripcion());
-      commons.util.JdbcHelper.setString(cs, 3, param.getCodexterno());
-      commons.util.JdbcHelper.setString(cs, 4, param.getIndactivo());
-      commons.util.JdbcHelper.setString(cs, 5, param.getUsuario());
-      cs.registerOutParameter(6, OracleTypes.CURSOR);
-      cs.execute();
-      rs=(ResultSet)cs.getObject(6);
-      param.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.LstTipparametroCursor", rs));
-
-
-    } catch (SQLException e) {
-      logger.error("[lstTipparametro] : " + "Conexion a BD");
-      throw new RuntimeException("" + e, e);
-
-    } finally {
-      JdbcHelper.close(null, cs, null, null, rs);
-
-    }
-  }
-
-  public void mntTipparametro(Connection conn, MntTipparametro param) {
-    CallableStatement cs=null;
-
-    try {
-      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN.sp_mnt_tipparametro(?,?,?,?,?,?,?,?)}");
-      
-      commons.util.JdbcHelper.setString(cs, 1, param.getIdetippar());
-      cs.registerOutParameter(1, Types.VARCHAR);
-      commons.util.JdbcHelper.setString(cs, 2, param.getDescripcion());
-      commons.util.JdbcHelper.setString(cs, 3, param.getCodexterno());
-      commons.util.JdbcHelper.setString(cs, 4, param.getIndactivo());
-      commons.util.JdbcHelper.setInt(cs, 5, param.getLongitudcampo());
-      commons.util.JdbcHelper.setString(cs, 6, param.getTipodato());
-      commons.util.JdbcHelper.setString(cs, 7, param.getUsuario());
-      commons.util.JdbcHelper.setString(cs, 8, param.getFgnew());
-      
-      cs.execute();
-      param.setIdetippar(cs.getString(1));
-
-    } catch (SQLException e) {
-      logger.error("[mntParametro] : " + "Conexion a BD");
-      throw new RuntimeException("" + e, e);
-
-    } finally {
-      JdbcHelper.close(null, cs, null, null, null);
-
-    }
-  }
-	  
+  
   public void lstParametro(Connection conn, LstParametro param) {
     CallableStatement cs=null;
     ResultSet rs=null;
@@ -308,28 +220,7 @@ public class UtilDaoImp implements UtilDao {
     }
   }
 
-  public void valCfgTippar(Connection conn, ValCfgTippar param) {
-    CallableStatement cs=null;
-    
-    try {
-      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN.SP_VAL_CFGTIPPAR(?,?,?)}");
-      commons.util.JdbcHelper.setString(cs, 1, param.getCodusuario() );
-      commons.util.JdbcHelper.setString(cs, 2, param.getIdetippar());
-      cs.registerOutParameter(3, Types.VARCHAR);
-      cs.execute();
-      param.setResult(cs.getString(3));
-
-    } catch (SQLException e) {
-      logger.error("[valCfgTippar] : " + "Conexion a BD");
-      throw new RuntimeException("" + e, e);
-
-    } finally {
-      JdbcHelper.close(null, cs, null, null, null);
-
-    }
-  }
-
-  public void mntArchivoblob(Connection conn, MntArchivoblob param) {
+   public void mntArchivoblob(Connection conn, MntArchivoblob param) {
     CallableStatement cs=null;
     
     try {
@@ -487,62 +378,7 @@ public class UtilDaoImp implements UtilDao {
 	  }
 
 
-	  public void lstTipparametroGes(Connection conn, LstTipparametro param) {
-	    CallableStatement cs=null;
-	    ResultSet rs=null;
-
-	    try {
-	      cs=conn.prepareCall("{call " + OWNERGES + "PQ_IAA_COMUN_GES.sp_lst_tipparametro(?,?,?,?,?,?)}");
-	      commons.util.JdbcHelper.setString(cs, 1, param.getIdetippar());
-	      commons.util.JdbcHelper.setString(cs, 2, param.getDescripcion());
-	      commons.util.JdbcHelper.setString(cs, 3, param.getCodexterno());
-	      commons.util.JdbcHelper.setString(cs, 4, param.getIndactivo());
-	      commons.util.JdbcHelper.setString(cs, 5, param.getUsuario());
-	      cs.registerOutParameter(6, OracleTypes.CURSOR);
-	      cs.execute();
-	      rs=(ResultSet)cs.getObject(6);
-	      param.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.LstTipparametroCursor", rs));
-
-
-	    } catch (SQLException e) {
-	      logger.error("[lstTipparametro] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, rs);
-
-	    }
-	  }
-
-	  public void mntTipparametroGes(Connection conn, MntTipparametro param) {
-	    CallableStatement cs=null;
-
-	    try {
-	      cs=conn.prepareCall("{call " + OWNERGES + "PQ_IAA_COMUN_GES.sp_mnt_tipparametro(?,?,?,?,?,?,?,?)}");
-	      
-	      commons.util.JdbcHelper.setString(cs, 1, param.getIdetippar());
-	      cs.registerOutParameter(1, Types.VARCHAR);
-	      commons.util.JdbcHelper.setString(cs, 2, param.getDescripcion());
-	      commons.util.JdbcHelper.setString(cs, 3, param.getCodexterno());
-	      commons.util.JdbcHelper.setString(cs, 4, param.getIndactivo());
-	      commons.util.JdbcHelper.setInt(cs, 5, param.getLongitudcampo());
-	      commons.util.JdbcHelper.setString(cs, 6, param.getTipodato());
-	      commons.util.JdbcHelper.setString(cs, 7, param.getUsuario());
-	      commons.util.JdbcHelper.setString(cs, 8, param.getFgnew());
-	      
-	      cs.execute();
-	      param.setIdetippar(cs.getString(1));
-
-	    } catch (SQLException e) {
-	      logger.error("[mntParametro] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, null);
-
-	    }
-	  }
-		  
+	  		  
 	  public void lstParametroGes(Connection conn, LstParametro param) {
 	    CallableStatement cs=null;
 	    ResultSet rs=null;
@@ -605,52 +441,7 @@ public class UtilDaoImp implements UtilDao {
 	    }
 	  }
 
-	  public void valCfgTipparGes(Connection conn, ValCfgTippar param) {
-	    CallableStatement cs=null;
-	    
-	    try {
-	      cs=conn.prepareCall("{call " + OWNERGES + "PQ_IAA_COMUN_GES.SP_VAL_CFGTIPPAR(?,?,?)}");
-	      commons.util.JdbcHelper.setString(cs, 1, param.getCodusuario() );
-	      commons.util.JdbcHelper.setString(cs, 2, param.getIdetippar());
-	      cs.registerOutParameter(3, Types.VARCHAR);
-	      cs.execute();
-	      param.setResult(cs.getString(3));
-
-	    } catch (SQLException e) {
-	      logger.error("[valCfgTippar] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, null);
-
-	    }
-	  }	  
-
-	  public void regUsuarioxOpcion(Connection conn, RegUsuarioxOpcion param) {
-		CallableStatement cs=null;
-		    
-	    try {
-
-	      cs=conn.prepareCall("{call " + OWNER + "pq_iaa_seguridad.sp_registro_opcion(?,?,?,?,?,?)}");
-	      commons.util.JdbcHelper.setString(cs, 1, param.getCodusuario());
-	      commons.util.JdbcHelper.setInt(cs, 2, param.getIdelog());
-	      commons.util.JdbcHelper.setInt(cs, 3, param.getCodaplicacion());
-	      commons.util.JdbcHelper.setString(cs, 4, param.getDscaplicacion());
-	      commons.util.JdbcHelper.setInt(cs, 5, param.getCodopcion());
-	      commons.util.JdbcHelper.setString(cs, 6, param.getDscopcion());
-	      
-	      cs.execute();
-
-	    } catch (SQLException e) {
-	      logger.error("[regUsuarioxOpcion] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, null);
-
-	    }
-	  }	  
-	  
+	 	  
 	  public void obtConstante(Connection conn, LstConstante param) {
 		    CallableStatement cs = null;
 		    ResultSet rs	     = null;
@@ -739,137 +530,7 @@ public class UtilDaoImp implements UtilDao {
 		    }
 	  }
 
-	public void mntAcuseRecibo(Connection conn,MntMailLogCursor mntMailLog) {
-	    CallableStatement cs=null;
-	    ResultSet rs=null;
-
-	    try {
-	      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN_MAIL.sp_mnt_acuse_recibo(?,?)}");
-	      commons.util.JdbcHelper.setString(cs, 1, mntMailLog.getToken());
-	      cs.registerOutParameter(2, OracleTypes.CURSOR);
-	      cs.execute();
-	      rs = (ResultSet)cs.getObject(2);
-	      mntMailLog.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.MntMailLogCursor", rs));
-
-
-	    } catch (SQLException e) {
-	      logger.error("[mntAcuseRecibo] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, rs);
-
-	    }
-		
-	}
-
-	public void obtDatosCasillaMail(Connection conn,
-			ListaCorreoGenerico lstCasilla) {
-		CallableStatement cs=null;
-	    ResultSet rs=null;
-
-	    try {
-	      cs=conn.prepareCall("{call " + OWNER + "PQ_IAA_COMUN_MAIL.sp_obt_datosmail(?,?)}");
-	      commons.util.JdbcHelper.setInt(cs, 1, lstCasilla.getIdetercero());
-	      cs.registerOutParameter(2, OracleTypes.CURSOR);
-	      cs.execute();
-	      rs = (ResultSet)cs.getObject(2);
-	      lstCasilla.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.ListaCorreoGenericoCursor", rs));
-
-
-	    } catch (SQLException e) {
-	      logger.error("[obtDatosCasillaMail] : " + "Conexion a BD");
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.close(null, cs, null, null, rs);
-
-	    }
-		
-	}
-	public void mntCasillaCorreo(Connection conn,
-			MntCasillaCorreo param) {
-		CallableStatement cs=null;
-
-	    try {
-	    	cs=conn.prepareCall("{call " + OWNERREP + "PQ_IAA_REPORTE_CRM.sp_mnt_crm_casilla_correo_ter(?,?,?,?,?,?)}");
-	    	commons.util.JdbcHelper.setInt(cs, 1, param.getIdetercero());
-//	    	cs.registerOutParameter(1, Types.INTEGER);
-	    	commons.util.JdbcHelper.setString(cs, 2, param.getCorreo());
-	    	commons.util.JdbcHelper.setString(cs, 3, param.getClave());
-	    	commons.util.JdbcHelper.setString(cs, 4, param.getNombre());
-	    	commons.util.JdbcHelper.setString(cs, 5, param.getStscasillacorreo());
-	    	commons.util.JdbcHelper.setString(cs, 6, param.getIndgenerico());
-	    	
-	    	cs.execute();
-//		    param.setIdemail(cs.getInt(1));
-
-	    } catch (SQLException e) {
-	    	logger.error("[mntCasillaCorreo] : " + "Conexion a BD");
-		    throw new RuntimeException("" + e, e);
-	    } finally {
-	    	JdbcHelper.close(null, cs, null, null, null);
-	    }
-	}
-	
-	public void lstCasillaCorreo(Connection conn,
-			MntCasillaCorreo param) {
-		CallableStatement cs=null;
-	    ResultSet rs=null;
-
-	    try {
-	    	cs=conn.prepareCall("{call " + OWNERREP + "PQ_IAA_REPORTE_CRM.sp_obt_crm_casilla_correo_ter(?,?,?)}");
-	    	commons.util.JdbcHelper.setInt(cs, 1, param.getIdetercero());
-	    	commons.util.JdbcHelper.setString(cs, 2, param.getNombre());
-	    	cs.registerOutParameter(3, OracleTypes.CURSOR);
-	    	cs.execute();
-	    	rs = (ResultSet)cs.getObject(3);
-	    	param.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.MntCasillaCorreoCursor", rs));
-
-	    } catch (SQLException e) {
-	    	logger.error("[lstCasillaCorreo] : " + "Conexion a BD");
-	    	throw new RuntimeException("" + e, e);
-	    } finally {
-	    	JdbcHelper.close(null, cs, null, null, rs);
-	    }
-	}
-
-	public List lstLog(Connection conn, LstLog lstlog) {
-		CallableStatement cs = null;
-		ResultSet rs = null;
-		List listaLog = null;
-		JSONObject object = null;
-		
-		
-		try {
-//			cs=conn.prepareCall("{call " +
-//					resources.getString(Constants.OWNER_ESQUEMA_INTERFAZ)+"."+
-//					"PQ_IAA_OBTENER_WS.sp_lst_log" +
-//					"(?,?,?,?,?)}");
-//			
-//			JdbcHelper.setInt(cs, 1, lstlog.getIdelog());
-//			JdbcHelper.setInt(cs, 2, lstlog.getIdtransac());
-//			JdbcHelper.setString(cs, 3, lstlog.getFecini());
-//			JdbcHelper.setString(cs, 4, lstlog.getFecfin());
-//			cs.registerOutParameter(5, OracleTypes.CURSOR);
-//			cs.execute();
-			
-			rs=(ResultSet)cs.getObject(5);
-			listaLog = new ArrayList();
-//			listaLog = commons.mapper.Utils.populateListFromResultSet("sas.bean.LstLog",rs);
-			
-
-		} catch (Exception e) {
-			logger.error("Error al listar remesas de DB: " + e);
-			throw new RuntimeException("[UtilDaoImp]: Error al listar log en DB" + e, e);
-		} finally {
-			logger.info("[UtilDaoImp]: ejecución finalizada listar log.");
-			JdbcHelper.close(null, cs, null, null, rs);
-		}
-		return listaLog;
-	}
-	
-	  public Usuario obtUsuario(Connection conn,Usuario usuario) {
+		  public Usuario obtUsuario(Connection conn,Usuario usuario) {
 		  CallableStatement cs = null;
 			ResultSet rs = null;
 			
@@ -896,46 +557,6 @@ public class UtilDaoImp implements UtilDao {
 	  }
 		
 	  
-
-	  //ini SCASTANEDM 2014.12.31
-	  public void obtTipoCambio(Connection conn, TipoCambio tipocambio) {
-		  CallableStatement cs = null;
-			ResultSet rs = null;
-			
-			try {
-
-//				System.out.println("ini obtTipoCambio");
-//				
-//			    String call = "{call " +
-//						resources.getString(Constants.OWNER_ESQUEMA_FINANZAS)+"."+
-//						"pq_iaa_recaudo.sp_tipo_cambio" +
-//						"(?,?,?,?,?,?)}";
-//
-//				
-//	            CallableStatement cstmt = conn.prepareCall(call);
-//	            
-//	            cstmt.setString(1, tipocambio.getMonedaini());
-//	            cstmt.setString(2, tipocambio.getMonedafin());
-//	            cstmt.setString(3, tipocambio.getTipotasa());
-//	            cstmt.setString(4, tipocambio.getFechacambio());
-//	            cstmt.registerOutParameter(5, oracle.jdbc.OracleTypes.NUMBER);
-//	            cstmt.registerOutParameter(6, oracle.jdbc.OracleTypes.NUMBER);
-//	            
-//				cstmt.executeQuery();
-//				
-//				tipocambio.setTipocambio(cstmt.getDouble(5));
-//				tipocambio.setRespuesta(cstmt.getInt(6));
-	            	            
-			} catch (Exception e) {
-				logger.error("Error al obtTipoCambio de DB: " + e);
-				throw new RuntimeException("[UtilDaoImp]: Error al listar log en DB" + e, e);
-			} finally {
-				logger.info("[UtilDaoImp]: ejecución finalizada listar log.");
-				JdbcHelper.close(null, cs, null, null, rs);
-			}
-
-	  }
-	  //fin SCASTANEDM 2014.12.31
 	  
 	  
 	  public String getIndicadorTrabajadorRimac(Connection conn, String username) {
@@ -972,41 +593,7 @@ public class UtilDaoImp implements UtilDao {
 			return salida;
 
 	  }
-	  
-		// RCR 04/09/2015 GC 21989 INI	
-	public void listarLogAuditoria(Connection conn, ListaLogAuditoria param) {
-		// TODO Auto-generated method stub
-		  CallableStatement cs=null;
-	      ResultSet rs=null;			
-			try {
-//				cs=conn.prepareCall("{call " +
-//						resources.getString(Constants.OWNER_ESQUEMA_COMUNES)+"."+
-//						"PQ_IAA_COMUN.sp_lst_logauditoria" +
-//						"(?,?,?,?)}");
-//				
-//				commons.util.JdbcHelper.setString(cs, 1, param.getNombretabla());				
-//				commons.util.JdbcHelper.setString(cs, 2, param.getFechaini());
-//				commons.util.JdbcHelper.setString(cs, 3, param.getFechafin());
-//				cs.registerOutParameter(4, OracleTypes.CURSOR);
-//				cs.execute();
-//				
-//				rs=(ResultSet)cs.getObject(4);
-//				  param.setCursor(commons.mapper.Utils.populateListFromResultSet("sas.bean.ListaLogAuditoria", rs));
-//				 commons.mapper.Utils.populateListFromResultSet("sas.bean.ListaLogAuditoria",rs);
-//				
-			  
-			} catch (Exception e) {
-				logger.error("Error al listar remesas de DB: " + e);
-				throw new RuntimeException("[UtilDaoImp]: Error al listar log de auditoria en DB" + e, e);
-			} finally {
-				logger.info("[UtilDaoImp]: ejecución finalizada listar log  de auditoria.");
-				JdbcHelper.close(null, cs, null, null, rs);
-			}
-		
-		}
-	// RCR 04/09/2015 GC 21989 FIN		
-	  
-	  	
+	    	
 	  
 }
 

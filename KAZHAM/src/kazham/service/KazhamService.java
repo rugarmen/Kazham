@@ -8,6 +8,7 @@ import commons.framework.BaseService;
 //import org.apache.log4j.Logger;
 //import org.json.simple.JSONObject;
 
+import kazham.bean.Informacion;
 import kazham.bean.PeriodoMes;
 import kazham.bean.Usuario;
 import kazham.dao.KazhamDao;
@@ -64,6 +65,20 @@ public class KazhamService extends BaseService {
 		java.sql.Connection conn = super.getConnection();
 		try {
 			kazhamDao.listarPeriodo(conn, param);
+		} catch (RuntimeException e) {
+			JdbcHelper.rollback(conn);
+			throw new RuntimeException("" + e, e);
+
+		} finally {
+			JdbcHelper.commit(conn);
+			JdbcHelper.close(conn, null, null, null, null);
+		}
+	}
+	
+	public void grabarInformacion(Informacion param) {
+		java.sql.Connection conn = super.getConnection();
+		try {
+			kazhamDao.grabarInformacion(conn, param);
 		} catch (RuntimeException e) {
 			JdbcHelper.rollback(conn);
 			throw new RuntimeException("" + e, e);

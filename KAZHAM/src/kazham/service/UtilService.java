@@ -25,23 +25,12 @@ import javax.naming.InitialContext;
 import javax.naming.Context;
 import javax.naming.NamingException;
 
-import kazham.bean.ListaCorreoGenerico;
-import kazham.bean.ListaLogAuditoria;
-import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
-import kazham.bean.LstLog;
 import kazham.bean.LstParametro;
-import kazham.bean.LstTipparametro;
 import kazham.bean.MntArchivoblob;
-import kazham.bean.MntCasillaCorreo;
 import kazham.bean.MntConstante;
-import kazham.bean.MntMailLogCursor;
 import kazham.bean.MntParametro;
-import kazham.bean.MntTipparametro;
-import kazham.bean.RegUsuarioxOpcion;
-import kazham.bean.TipoCambio;
 import kazham.bean.Usuario;
-import kazham.bean.ValCfgTippar;
 import kazham.commons.Constants;
 import kazham.dao.UtilDao;
 import kazham.dao.jdbcimp.UtilDaoImp;
@@ -108,59 +97,6 @@ public class UtilService extends BaseService {
 		}
 	}
 
-	public void listaParametro(Periodo param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.listaParametro(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[listaParametro] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}
-
-	public void lstTipparametro(LstTipparametro param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.lstTipparametro(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[lstTipparametro] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-	}
-
-	public void mntTipparametro(MntTipparametro param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.mntTipparametro(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[mntTipparametro] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}
-
 	public void lstParametro(LstParametro param) {
 		java.sql.Connection conn = super.getConnection();
 		try {
@@ -197,24 +133,7 @@ public class UtilService extends BaseService {
 
 	}
 
-	public void valCfgTippar(ValCfgTippar param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.valCfgTippar(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[valCfgTippar] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}
-/*
+	/*
 	public void mntArchivoblob(MntArchivoblob param) {
 
 		java.sql.Connection conn = null;
@@ -375,41 +294,7 @@ public class UtilService extends BaseService {
 
 	}
 */
-	public void lstTipparametroGes(LstTipparametro param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.lstTipparametroGes(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[lstTipparametro] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-	}
-
-	public void mntTipparametroGes(MntTipparametro param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.mntTipparametroGes(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[mntTipparametro] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}
-
+	
 	public void lstParametroGes(LstParametro param) {
 		java.sql.Connection conn = super.getConnection();
 		try {
@@ -446,41 +331,7 @@ public class UtilService extends BaseService {
 
 	}
 
-	public void valCfgTipparGes(ValCfgTippar param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.valCfgTipparGes(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[valCfgTippar] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}
-	  public void regUsuarioxOpcion(RegUsuarioxOpcion param) {
-	    java.sql.Connection conn = super.getConnection();
-	    try {
-	      utilDao.regUsuarioxOpcion(conn, param);
-
-	    } catch (RuntimeException e) {
-	      logger.error("[regUsuarioxOpcion] : " + "Consulta Opciones");
-	      JdbcHelper.rollback(conn);
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.commit(conn);
-	      JdbcHelper.close(conn, null, null, null, null);
-
-	    }
-
-	  }
-	  
+		  
 	  public void obtConstante(LstConstante param) {
 	    java.sql.Connection conn = super.getConnection();
 	    try {
@@ -517,91 +368,6 @@ public class UtilService extends BaseService {
 
 		  }
 
-	public void mntAcuseRecibo(MntMailLogCursor mntMailLog) {
-		java.sql.Connection conn = super.getConnection();
-	    try {
-	      utilDao.mntAcuseRecibo(conn,mntMailLog);
-
-	    } catch (RuntimeException e) {
-	      logger.error("[mntAcuseRecibo] : " + mntMailLog.getToken());
-	      JdbcHelper.rollback(conn);
-	      throw new RuntimeException("" + e, e);
-
-	    } finally {
-	      JdbcHelper.commit(conn);
-	      JdbcHelper.close(conn, null, null, null, null);
-	    }
-		
-	}
-	public void obtDatosCasillaMail(ListaCorreoGenerico lstCasilla) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.obtDatosCasillaMail(conn, lstCasilla);
-
-		} catch (RuntimeException e) {
-			logger.error("[obtDatosCasillaMail] : " + "Consulta Datos de la casilla de correos");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-
-	}  
-	public void mntCasillaCorreo(MntCasillaCorreo param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.mntCasillaCorreo(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[mntCasillaCorreo] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-	}
-	
-	public void lstCasillaCorreo(MntCasillaCorreo param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.lstCasillaCorreo(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[lstCasillaCorreo] : " + "Consulta servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-	}
-
-	public List lstLog(LstLog lstlog) {
-		List listaLog;
-		Connection conn = null;
-		
-		try {
-			conn = super.getConnection();
-			listaLog = utilDao.lstLog(conn,lstlog);
-		}
-		catch (Exception e) {
-				logger.error("Error al listar los log: " + e);
-				throw new RuntimeException(
-						"[FinanciamientoService]: Error al listar los log" +
-						" de canal" + e, e);
-		} finally {
-				JdbcHelper.close(conn);
-		}
-		return listaLog;
-	}
 	
 	public Usuario obtUsuario(Usuario usuario) {
 		Connection conn = null;
@@ -621,28 +387,7 @@ public class UtilService extends BaseService {
 		return usuario;
 	}
 	
-	//ini SCASTANEDM 2014.12.31
-	public TipoCambio obtTipoCambio(TipoCambio tipocambio) {
-		Connection conn = null;
 		
-		try {
-			conn = super.getConnection();
-			utilDao.obtTipoCambio(conn,tipocambio);
-
-		}
-		catch (Exception e) {
-				logger.error("Error al obtTipoCambio: " + e);
-				throw new RuntimeException(
-						"[UtilService]: Error al listar los log" +
-						" de canal" + e, e);
-		} finally {
-				JdbcHelper.close(conn);
-		}
-		
-		return tipocambio;
-	}
-	//fin SCASTANEDM 2014.12.31
-	
 	public String getIndicadorTrabajadorRimac(String username) {
 		Connection conn = null;
 		String salida = "";
@@ -663,25 +408,7 @@ public class UtilService extends BaseService {
 		return salida;
 	}
 
-	// RCR 04/09/2015 GC 21989 INI
-	public void listarLogAuditoria(ListaLogAuditoria param) {
-		java.sql.Connection conn = super.getConnection();
-		try {
-			utilDao.listarLogAuditoria(conn, param);
-
-		} catch (RuntimeException e) {
-			logger.error("[listarLogAuditoria] : " + "Consulta log servicio");
-			JdbcHelper.rollback(conn);
-			throw new RuntimeException("" + e, e);
-
-		} finally {
-			JdbcHelper.commit(conn);
-			JdbcHelper.close(conn, null, null, null, null);
-
-		}
-	}
-	// RCR 04/09/2015 GC 21989 FIN
-	
+		
 	// RCR 08/09/2015 GC 21989 INI
 	  public Connection getConnectionOracleDS() {
 			

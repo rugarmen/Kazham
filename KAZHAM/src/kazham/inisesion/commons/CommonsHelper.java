@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import kazham.bean.LstLog;
-
 //import sas.seguridad.commons.SeguridadUtils;
 
 import com.rimac.security.SeguridadXML;
@@ -76,16 +74,7 @@ public class CommonsHelper {
 		return dato;
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public static void setIndexRowLog(List listaLog) {
-		LstLog log = null;
 		
-		for(int i=0; i<listaLog.size(); i++) {
-			log = (LstLog) listaLog.get(i);
-			log.setIndexRow(i+1);
-		}
-	}
-	
 	/**
 	 * Método que formatea el error a formato JSON
 	 * @param origen Origen del error (exception, warning, validacion)

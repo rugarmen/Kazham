@@ -12,10 +12,8 @@ public class PeriodoMes implements Serializable {
   *
   **/
   private static final long serialVersionUID = 1L;
-  private String idetippar;
-  private String codigo;
-  private String abreviatura;
-  private String descripcion;
+  private String ideperiodo;
+  private String descperiodo;
   private List cursor;
 
   public PeriodoMes() {}
@@ -24,36 +22,20 @@ public class PeriodoMes implements Serializable {
     ResourceManager.populateDtoFromMap(this, map);
   }
 
-public String getIdetippar() {
-	return idetippar;
+public String getIdeperiodo() {
+	return ideperiodo;
 }
 
-public void setIdetippar(String idetippar) {
-	this.idetippar = idetippar;
+public void setIdeperiodo(String ideperiodo) {
+	this.ideperiodo = ideperiodo;
 }
 
-public String getCodigo() {
-	return codigo;
+public String getDescperiodo() {
+	return descperiodo;
 }
 
-public void setCodigo(String codigo) {
-	this.codigo = codigo;
-}
-
-public String getAbreviatura() {
-	return abreviatura;
-}
-
-public void setAbreviatura(String abreviatura) {
-	this.abreviatura = abreviatura;
-}
-
-public String getDescripcion() {
-	return descripcion;
-}
-
-public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+public void setDescperiodo(String descperiodo) {
+	this.descperiodo = descperiodo;
 }
 
 public List getCursor() {

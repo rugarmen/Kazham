@@ -43,13 +43,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import kazham.bean.DatosPasarelaEC;
-import kazham.bean.ListaCorreoGenerico;
-import kazham.bean.ListaCorreoGenericoCursor;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
 import kazham.bean.MntArchivoblob;
-import kazham.bean.TipoCambio;
 import kazham.bean.Usuario;
 import kazham.commons.Constants;
 import kazham.inisesion.commons.CommonsHelper;
@@ -526,39 +522,7 @@ public class UtilController extends BaseController{
 	 * @param response 
 	 * @return 
 	 */
-	@SuppressWarnings("unchecked")
-	public ModelAndView obtDatosCasillaMail(HttpServletRequest request, HttpServletResponse response) {
-		response.setContentType("text/html; charset=UTF-8");
-	    
-	    try {
-	    	//PENDIENTE-hacer una validación de la session
-	    	ListaCorreoGenerico constantesCasilla=new ListaCorreoGenerico();
-  			utilService.obtDatosCasillaMail(constantesCasilla);
-  			String userAuth="";
-			String passAuth="";
-			String host="";
-			
-			List<ListaCorreoGenericoCursor> lstConstanteCasilla;
-  			ListaCorreoGenericoCursor beanCasilla;
-  			lstConstanteCasilla = (List<ListaCorreoGenericoCursor>)constantesCasilla.getCursor();
-  			for (int i = 0; i < lstConstanteCasilla.size(); i++){
-  				beanCasilla = lstConstanteCasilla.get(i);
-  				userAuth=beanCasilla.getCorreo();
-				passAuth=beanCasilla.getPassword();
-				host=beanCasilla.getHost();
-  			}
-			this.escribirTextoSalida(response, userAuth+"<->"+passAuth+"<->"+host);	      
-
-	    } catch (RuntimeException e) {
-	      this.escribirTextoSalida(response, commons.mapper.Utils.getMessageORA(e.getMessage()));
-	      //e.printStackTrace(); //SAS20151119
-	    } catch (Exception e) {
-	      //e.printStackTrace(); //SAS20151119
-	    }
-		
-		return new ModelAndView();
-	}
-
+	
 	/**
 	 * Petición de Inicialización de TRX para la pasarela de pago
 	 * @author jcasianoc

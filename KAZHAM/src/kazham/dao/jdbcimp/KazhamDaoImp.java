@@ -12,25 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import kazham.bean.ListaCorreoGenerico;
-import kazham.bean.ListaLogAuditoria;
-import kazham.bean.Periodo;
+import kazham.bean.Informacion;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
-import kazham.bean.LstLog;
 import kazham.bean.LstParametro;
-import kazham.bean.LstTipparametro;
 import kazham.bean.MntArchivoblob;
-import kazham.bean.MntCasillaCorreo;
 import kazham.bean.MntConstante;
-import kazham.bean.MntMailLogCursor;
 import kazham.bean.MntParametro;
-import kazham.bean.MntTipparametro;
 import kazham.bean.PeriodoMes;
-import kazham.bean.RegUsuarioxOpcion;
-import kazham.bean.TipoCambio;
 import kazham.bean.Usuario;
-import kazham.bean.ValCfgTippar;
 import kazham.commons.Constants;
 import kazham.dao.KazhamDao;
 import kazham.dao.UtilDao;
@@ -89,20 +79,19 @@ public class KazhamDaoImp implements KazhamDao {
 			    }
 	    	    
   }
-    	
-	
+   
   public void listarPeriodo(Connection conn, PeriodoMes param){
 	    CallableStatement cs=null;
+	    ResultSet rs=null;
 
 	    try {
-		      cs=conn.prepareCall("{call " + OWNER + ".PQ_KAZ_USUARIO.sp_mnt_usuario(?,?,?,?)}");
-		      
-//		      commons.util.JdbcHelper.setString(cs, 1, param.getIdeusuario());
-//		      commons.util.JdbcHelper.setString(cs, 2, param.getName());
-//		      commons.util.JdbcHelper.setString(cs, 3, param.getEmail());
-//		      commons.util.JdbcHelper.setString(cs, 4, param.getPassword());
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_CBO_PERIODO(?)}");
+		      cs.registerOutParameter(1, OracleTypes.CURSOR);
 		      cs.execute();
-		      //param.setIdetippar(cs.getString(1));
+		      
+		      rs=(ResultSet)cs.getObject(1);
+		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(PeriodoMes.class.getName(), rs));
+
 
 		    } catch (SQLException e) {
 		      throw new RuntimeException("" + e, e);
@@ -111,6 +100,31 @@ public class KazhamDaoImp implements KazhamDao {
 		      JdbcHelper.close(null, cs, null, null, null);
 		    }
   	}
+  
+  public void grabarInformacion(Connection conn, Informacion param){
+	    CallableStatement cs=null;
+
+		    try {
+			      cs=conn.prepareCall("{call " + OWNER + ".PQ_KAZ_USUARIO.sp_mnt_usuario(?,?,?,?)}");
+			      
+//			      commons.util.JdbcHelper.setString(cs, 1, param.getIdeusuario());
+//			      commons.util.JdbcHelper.setString(cs, 2, param.getName());
+//			      commons.util.JdbcHelper.setString(cs, 3, param.getEmail());
+//			      commons.util.JdbcHelper.setString(cs, 4, param.getPassword());
+			      cs.execute();
+			      //param.setIdetippar(cs.getString(1));
+
+			    } catch (SQLException e) {
+//			      logger.error("[mntConstante] : " + "Conexion a BD");
+			      throw new RuntimeException("" + e, e);
+
+			    } finally {
+			      JdbcHelper.close(null, cs, null, null, null);
+
+			    }
+	    	    
+}
+  
 }
 
 
