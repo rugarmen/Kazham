@@ -14,7 +14,7 @@ import commons.framework.BaseService;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
-import com.ibm.websphere.rsadapter.WSCallHelper;
+//import com.ibm.websphere.rsadapter.WSCallHelper;
 
 //import sas.seguridad.bean.ObtUsuarioCursor;
 import oracle.jdbc.pool.OracleDataSource;
@@ -214,7 +214,7 @@ public class UtilService extends BaseService {
 		}
 
 	}
-
+/*
 	public void mntArchivoblob(MntArchivoblob param) {
 
 		java.sql.Connection conn = null;
@@ -270,7 +270,7 @@ public class UtilService extends BaseService {
 		}
 
 	}
-
+*/
 	public String viewFile(String idArchivo, String ruta) {
 		java.sql.Connection conn = super.getConnection();
 		String fileName = null;
@@ -321,7 +321,7 @@ public class UtilService extends BaseService {
 		}
 
 	}
-
+/*
 	public void mntArchivoblobGes(MntArchivoblob param) {
 
 		java.sql.Connection conn = null;
@@ -374,7 +374,7 @@ public class UtilService extends BaseService {
 		}
 
 	}
-
+*/
 	public void lstTipparametroGes(LstTipparametro param) {
 		java.sql.Connection conn = super.getConnection();
 		try {

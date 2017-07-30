@@ -6,9 +6,6 @@ import kazham.bean.PeriodoMes;
 import kazham.bean.Usuario;
 
 
-import org.json.simple.JSONObject;
-
-
 
 /**
  * Funcion: clase dao de la clase util 
