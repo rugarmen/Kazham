@@ -5,6 +5,7 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+/*
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
@@ -13,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+*/
 import org.json.simple.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -116,7 +118,7 @@ public class UtilController extends BaseController{
 	 * @return file
 	 */
   public ModelAndView exportExcel(HttpServletRequest request, HttpServletResponse response) {
-
+/*
 	String tipoLetra = "Verdana";
 	String nombreHojaExcel = "Listado";
 	String separadorConcat = ";";
@@ -290,7 +292,7 @@ public class UtilController extends BaseController{
         //e.printStackTrace(); //SAS20151119
 		logger.error("[exportExcel] : " + e.getMessage());
     }
-        
+*/
     return new ModelAndView();
   }
 	/**
@@ -458,7 +460,7 @@ public class UtilController extends BaseController{
 	                	param.setBytes("" + size);
 	                	logger.info("[uploadFile] : while-size=" + size);
 	                	param.setDescripcion(request.getParameter("descripcion"));
-	                	utilService.mntArchivoblobGes(param);
+	                	//utilService.mntArchivoblobGes(param);
 	                    
 	                	idarchivo = "" + param.getIdearchivoblob();
                     }

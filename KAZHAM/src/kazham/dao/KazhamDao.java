@@ -4,9 +4,6 @@ import java.sql.Connection;
 import kazham.bean.Usuario;
 
 
-import org.json.simple.JSONObject;
-
-
 
 /**
  * Funcion: clase dao de la clase util 
