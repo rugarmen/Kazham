@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+    Product: Kazham - Planificación y Control Logístico (Prueba GIT)
+    Version: 1.0
+    Author: Kazham
+================================================================================ -->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Planificación y Control Logístico. ">
+    <meta name="keywords" content="Planificación, Control, Logístico,">
+    <title>Kazham - Planificación y Control Logístico</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="images\favicon\favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images\favicon\apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+
+    <!-- CORE CSS-->    
+    <link href="css\materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css\style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js\plugins\perfect-scrollbar\perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js\plugins\jvectormap\jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js\plugins\chartist-js\chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+    <!-- Add your own theme custom JS-->
+    <script type="text/javascript" src="fwk\vue-dev\dist\vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+    <script type="text/javascript" src="fwk\vue-dev\dist\vue-resource.min.js"></script>
+    <script type="text/javascript" src="fwk\app\x.js"></script>
+    <!--  -->
+  
+</head>
+
+<body>
+    <!-- Start Page Loading -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>        
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!-- End Page Loading -->
+    <!-- START HEADER -->
+    <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><!-- a href="index-1.htm" class="brand-logo darken-1"><img src="images\materialize-logo.png" alt="materialize logo"></a --> <span class="logo-text">Kazham</span></h1></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav">
+                <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                <li class="user-details cyan darken-2">
+                <div class="row">
+                    <div class="col col s4 m4 l4">
+                        <img src="images\avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                    </div>
+                    <div class="col col s8 m8 l8">
+                        <ul id="profile-dropdown" class="dropdown-content">
+                            <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
+                            </li>
+                            <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
+                            </li>
+                            <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
+                            </li>
+                            <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Kaz Ham<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                        <p class="user-roal">Administrador</p>
+                    </div>
+                </div>
+                </li>
+              
+                <li class="li-hover"><p class="ultra-small margin more-text">OPCIONES</p></li>
+                <li><a href="forms.html"><i class="mdi-action-verified-user"></i> Opción 01  </a>
+                </li>
+                <li><a href="opcion02.html"><i class="mdi-image-grid-on"></i> Opción 02  </a>
+                </li>
+                <li><a href="mlPeriodo.html"><i class="mdi-editor-format-color-fill"></i> Periodo  </a>
+                </li>
+                <li><a href="form04.html"><i class="mdi-communication-live-help"></i> Opción 04  </a>
+                </li>
+                <li><a href="form05.html"><i class="mdi-action-swap-vert-circle"></i> Opción 05  </a>
+                </li>                    
+                <!--
+                <li class="li-hover"><div class="divider"></div></li>
+                <li class="li-hover"><p class="ultra-small margin more-text">Daily Sales</p></li>
+                <li class="li-hover">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="sample-chart-wrapper">                            
+                                <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                -->
+            </ul>
+                <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+            </aside>
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- START CONTENT -->
+      <section id="content">
+
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper">
+            <!-- Search for small screen -->
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Zonas</h5>
+                <ol class="breadcrumbs">
+                  <li><a href="index.html">Mantenimiento</a></li>
+                  </li><li class="active">Plan Producción Mina</li>
+                  </li><li class="active">Zona</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
+
+        <!--start container-->
+        <div class="container">
+          <div class="section">
+            <span class="caption">Plan de Producción de Minas por Zona.</span>
+            <br><br>
+            <div class="divider"></div>
+            <!--Basic Form-->
+            <div id="basic-form" class="section">
+              <div class="row">
+                <div class="col s12 m12 l6">
+                  <div class="card-panel">
+                    <div class="row">
+                      <form class="col s12" action="kazham.do?method=guardarDato" method="POST">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <select id="periodo" name="periodo">
+	                          <option value="" disabled="" selected="">Selecione el periodo
+	                          <option value="1" v-model="periodo">01
+	                          <option value="2">02
+	                          <option value="3">03
+	                        </select>
+                            <label id="lblperiodo" for="periodo">Periodo (Mes): </label>
+                          </div>  
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <select id="descripcion" name="descripcion">
+	                          <option value="" disabled="" selected="">Selecione la descripción
+	                          <option value="1" v-model="mina">01
+	                          <option value="2">02
+	                          <option value="3">03
+	                        </select>
+                            <label id="lbldescripcion" for="descripcion">Descripción: </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <select id="unidad" name="unidad">
+	                          <option value="" disabled="" selected="">Selecione el unidad
+	                          <option value="1" v-model="unidad">01
+	                          <option value="2">02
+	                          <option value="3">03
+	                        </select>
+                            <label id="lblunidad" for="unidad">Unidad: </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input id="valor" name="valor" type="number" v-model="valor">
+                            <label id="lblvalor" for="valor">Valor: </label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="button" name="action" v-on:click="save('ver')">Grabar
+                              <i class="mdi-content-send right"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+      </div>
+  </section>
+
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+        <div class="container">
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright © 2017 <a class="grey-text text-lighten-4" href="http://" target="_blank">KazhamLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://">Kazham</a></span>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js\plugins\jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js\materialize.min.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js\plugins\perfect-scrollbar\perfect-scrollbar.min.js"></script>
+	<script type="text/javascript" src="js\plugins.min.js"></script>
+    <script>
+
+        var vm = new Vue({
+          el: '#basic-form',
+          data: {
+        	  periodo: '',
+        	  descripcion: '',
+        	  unidad: '',
+        	  valor: ''
+          },
+          methods: {
+            save:function(v){
+                alert('x: ' + v);
+
+                this.$http.post('https://sat.rimac.com.pe/SAT/sas.do?method=lstParametroGes&masterdetail=&idetippar=RTC_PARAPLICACIONRIMAC',{
+                }).then(function(response){
+                    /*
+                    this["nombre"] = response.data[3][4];
+                    for(var i=0; i<Object.keys(this._data).length; i++){
+                        document.getElementById(Object.keys(this._data)[i]).focus();
+                    }   
+                    */
+                    for(var i=0; i<Object.keys(this._data).length; i++){
+                        this[Object.keys(this._data)[i]]=''; 
+                        try{
+                            document.getElementById("lbl"+Object.keys(this._data)[i]).classList.remove("active");
+                        }catch(err){ null; };
+                    }  
+                    this["nombre"] = response.data[3][4];
+                    this["correo"] = response.data[3][0];
+                    this["clave"] = response.data[3][7];
+                    for(var i=0; i<Object.keys(this._data).length; i++){
+                        if (this[Object.keys(this._data)[i]] != ''){ 
+                            try{
+                                document.getElementById("lbl"+Object.keys(this._data)[i]).classList.add("active");
+                            }catch(err){ null; };
+                        }
+                    }  
+                    
+                    
+                }, function(){
+                    alert('Error!');
+                });
+            }
+          }
+        });
+ 
+    </script>
+</div></div></body>
+
+</html>
