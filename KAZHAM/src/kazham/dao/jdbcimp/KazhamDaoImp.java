@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import kazham.bean.ComponentePlantilla;
+import kazham.bean.DetallePlantilla;
 import kazham.bean.Informacion;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
@@ -20,6 +22,7 @@ import kazham.bean.MntArchivoblob;
 import kazham.bean.MntConstante;
 import kazham.bean.MntParametro;
 import kazham.bean.PeriodoMes;
+import kazham.bean.Plantilla;
 import kazham.bean.Usuario;
 import kazham.commons.Constants;
 import kazham.dao.KazhamDao;
@@ -136,6 +139,72 @@ public class KazhamDaoImp implements KazhamDao {
 		      
 		      rs=(ResultSet)cs.getObject(1);
 		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(Informacion.class.getName(), rs));
+
+
+		    } catch (SQLException e) {
+		      throw new RuntimeException("" + e, e);
+
+		    } finally {
+		      JdbcHelper.close(null, cs, null, null, null);
+		    }
+  	}
+    
+    public void listarPlantilla(Connection conn, Plantilla param){
+	    CallableStatement cs=null;
+	    ResultSet rs=null;
+
+	    try {
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_PLANTILLA(?,?)}");
+		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdeempresa());
+		      cs.registerOutParameter(2, OracleTypes.CURSOR);
+		      cs.execute();
+		      
+		      rs=(ResultSet)cs.getObject(2);
+		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(Plantilla.class.getName(), rs));
+
+
+		    } catch (SQLException e) {
+		      throw new RuntimeException("" + e, e);
+
+		    } finally {
+		      JdbcHelper.close(null, cs, null, null, null);
+		    }
+  	}
+    
+    public void listarComponentePlantilla(Connection conn, ComponentePlantilla param){
+	    CallableStatement cs=null;
+	    ResultSet rs=null;
+
+	    try {
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_COMPLANTILLA(?,?)}");
+		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdeplantilla());
+		      cs.registerOutParameter(2, OracleTypes.CURSOR);
+		      cs.execute();
+		      
+		      rs=(ResultSet)cs.getObject(2);
+		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(ComponentePlantilla.class.getName(), rs));
+
+
+		    } catch (SQLException e) {
+		      throw new RuntimeException("" + e, e);
+
+		    } finally {
+		      JdbcHelper.close(null, cs, null, null, null);
+		    }
+  	}
+    
+    public void listarDetallePlantilla(Connection conn, DetallePlantilla param){
+	    CallableStatement cs=null;
+	    ResultSet rs=null;
+
+	    try {
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_DETPLANTILLA(?,?)}");
+		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdecomplantilla());
+		      cs.registerOutParameter(2, OracleTypes.CURSOR);
+		      cs.execute();
+		      
+		      rs=(ResultSet)cs.getObject(2);
+		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(DetallePlantilla.class.getName(), rs));
 
 
 		    } catch (SQLException e) {

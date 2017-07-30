@@ -2,8 +2,11 @@ package kazham.dao;
 
 import java.sql.Connection;
 
+import kazham.bean.ComponentePlantilla;
+import kazham.bean.DetallePlantilla;
 import kazham.bean.Informacion;
 import kazham.bean.PeriodoMes;
+import kazham.bean.Plantilla;
 import kazham.bean.Usuario;
 
 
@@ -23,6 +26,12 @@ public interface KazhamDao  {
     void grabarInformacion(Connection conn, Informacion param);
     
     void listarInformacion(Connection conn, Informacion param);
+    
+    void listarPlantilla(Connection conn, Plantilla param);
+    
+    void listarComponentePlantilla(Connection conn, ComponentePlantilla param);
+    
+    void listarComponentePlantilla(Connection conn, DetallePlantilla param);
 }
 
 

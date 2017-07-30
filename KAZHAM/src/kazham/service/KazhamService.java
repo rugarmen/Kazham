@@ -8,8 +8,11 @@ import commons.framework.BaseService;
 //import org.apache.log4j.Logger;
 //import org.json.simple.JSONObject;
 
+import kazham.bean.ComponentePlantilla;
+import kazham.bean.DetallePlantilla;
 import kazham.bean.Informacion;
 import kazham.bean.PeriodoMes;
+import kazham.bean.Plantilla;
 import kazham.bean.Usuario;
 import kazham.dao.KazhamDao;
 //import kazham.dao.UtilDao;
@@ -102,5 +105,47 @@ public class KazhamService extends BaseService {
 			JdbcHelper.close(conn, null, null, null, null);
 		}
 	}
+
+	public void listarPlantilla(Plantilla param) {
+		java.sql.Connection conn = super.getConnection();
+		try {
+			kazhamDao.listarPlantilla(conn, param);
+		} catch (RuntimeException e) {
+			JdbcHelper.rollback(conn);
+			throw new RuntimeException("" + e, e);
+
+		} finally {
+			JdbcHelper.commit(conn);
+			JdbcHelper.close(conn, null, null, null, null);
+		}
+	}
 	
+	public void listarComponentePlantilla(ComponentePlantilla param) {
+		java.sql.Connection conn = super.getConnection();
+		try {
+			kazhamDao.listarComponentePlantilla(conn, param);
+		} catch (RuntimeException e) {
+			JdbcHelper.rollback(conn);
+			throw new RuntimeException("" + e, e);
+
+		} finally {
+			JdbcHelper.commit(conn);
+			JdbcHelper.close(conn, null, null, null, null);
+		}
+	}
+	
+	public void listarDetallePlantilla(DetallePlantilla param) {
+		java.sql.Connection conn = super.getConnection();
+		try {
+			kazhamDao.listarDetallePlantilla(conn, param);
+		} catch (RuntimeException e) {
+			JdbcHelper.rollback(conn);
+			throw new RuntimeException("" + e, e);
+
+		} finally {
+			JdbcHelper.commit(conn);
+			JdbcHelper.close(conn, null, null, null, null);
+		}
+	}
 }
+

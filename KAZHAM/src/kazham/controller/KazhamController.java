@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kazham.bean.ComponentePlantilla;
+import kazham.bean.DetallePlantilla;
 import kazham.bean.Informacion;
 import kazham.bean.LstConstante;
 import kazham.bean.PeriodoMes;
+import kazham.bean.Plantilla;
 
 import kazham.bean.Usuario;
 
@@ -187,5 +190,76 @@ public class KazhamController extends BaseController {
 		return new ModelAndView();
 	}
 
+
+	@RequestMapping("/listarPlantilla")
+	public ModelAndView listarPlantilla(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		Plantilla param;
+
+		try {
+			param = new Plantilla(request.getParameterMap());
+			kazhamService.listarPlantilla(param);
+
+			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,Plantilla.class.getName());
+//			String listaParam = "[['01','AAAAA'],['02','BBBBB']]";
+			this.escribirTextoSalida(response, listaParam);
+
+		} catch (RuntimeException e) {
+			logger.error("[listarPlantilla] : " + e.getMessage());
+			this.escribirTextoSalida(response,
+					commons.mapper.Utils.getErrorMessage(e));
+		} catch (Exception e) {
+			logger.error("[listarPlantilla] : " + e.getMessage());
+		}
+		return new ModelAndView();
+	}
+
+	@RequestMapping("/listarComponentePlantilla")
+	public ModelAndView listarComponentePlantilla(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		ComponentePlantilla param;
+
+		try {
+			param = new ComponentePlantilla(request.getParameterMap());
+			kazhamService.listarComponentePlantilla(param);
+
+			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,ComponentePlantilla.class.getName());
+//			String listaParam = "[['01','AAAAA'],['02','BBBBB']]";
+			this.escribirTextoSalida(response, listaParam);
+
+		} catch (RuntimeException e) {
+			logger.error("[listarComponentePlantilla] : " + e.getMessage());
+			this.escribirTextoSalida(response,
+					commons.mapper.Utils.getErrorMessage(e));
+		} catch (Exception e) {
+			logger.error("[listarComponentePlantilla] : " + e.getMessage());
+		}
+		return new ModelAndView();
+	}
 	
+	@RequestMapping("/listarDetallePlantilla")
+	public ModelAndView listarDetallePlantilla(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		DetallePlantilla param;
+
+		try {
+			param = new DetallePlantilla(request.getParameterMap());
+			kazhamService.listarDetallePlantilla(param);
+
+			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,DetallePlantilla.class.getName());
+//			String listaParam = "[['01','AAAAA'],['02','BBBBB']]";
+			this.escribirTextoSalida(response, listaParam);
+
+		} catch (RuntimeException e) {
+			logger.error("[listarDetallePlantilla] : " + e.getMessage());
+			this.escribirTextoSalida(response,
+					commons.mapper.Utils.getErrorMessage(e));
+		} catch (Exception e) {
+			logger.error("[listarDetallePlantilla] : " + e.getMessage());
+		}
+		return new ModelAndView();
+	}
 }
