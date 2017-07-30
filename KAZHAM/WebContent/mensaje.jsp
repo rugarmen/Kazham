@@ -123,7 +123,7 @@
 		document.getElementById('SCHEME').value = location.protocol;
 		document.getElementById('SERVERNAME').value = location.hostname;
 	    document.getElementById('SERVERPORT').value = location.port;
-	    //[FIN - DAVID ARGURME - 13/09/2012]
+	    //[FIN - DAVID ARGURME - 13/09/2012]..
 	    
 		var jfLogin = {
 				CODUSUARIO : usuario.value,
