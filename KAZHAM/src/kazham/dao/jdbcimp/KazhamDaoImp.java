@@ -101,7 +101,7 @@ public class KazhamDaoImp implements KazhamDao {
 		    }
   	}
   
-  public void grabarInformacion(Connection conn, Informacion param){
+  	public void grabarInformacion(Connection conn, Informacion param){
 	    CallableStatement cs=null;
 
 		    try {
@@ -123,8 +123,28 @@ public class KazhamDaoImp implements KazhamDao {
 
 			    }
 	    	    
-}
+  	}
   
+    public void listarInformacion(Connection conn, Informacion param){
+	    CallableStatement cs=null;
+	    ResultSet rs=null;
+
+	    try {
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_INFORMACION(?)}");
+		      cs.registerOutParameter(1, OracleTypes.CURSOR);
+		      cs.execute();
+		      
+		      rs=(ResultSet)cs.getObject(1);
+		      param.setCursor(commons.mapper.Utils.populateListFromResultSet(Informacion.class.getName(), rs));
+
+
+		    } catch (SQLException e) {
+		      throw new RuntimeException("" + e, e);
+
+		    } finally {
+		      JdbcHelper.close(null, cs, null, null, null);
+		    }
+  	}
 }
 
 

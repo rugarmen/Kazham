@@ -21,6 +21,8 @@ public interface KazhamDao  {
     void listarPeriodo(Connection conn, PeriodoMes param);
     
     void grabarInformacion(Connection conn, Informacion param);
+    
+    void listarInformacion(Connection conn, Informacion param);
 }
 
 

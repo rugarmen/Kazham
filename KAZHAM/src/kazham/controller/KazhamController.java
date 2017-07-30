@@ -155,19 +155,37 @@ public class KazhamController extends BaseController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-//		try {
-//			request.getRequestDispatcher("/index.html").forward(request, response);
-//		} catch (ServletException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-//		return null;
 	}
 	
+
+	/**
+	 * Método que permite obtener el usuario logueado a la aplicación
+	 * @param request permite obtener el contexto del aplicativo
+	 * @param response Permite enviar la respuesta
+	 */
+	@RequestMapping("/listarInformacion")
+	public ModelAndView listarInformacion(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		Informacion param;
+
+		try {
+			param = new Informacion(request.getParameterMap());
+			kazhamService.listarInformacion(param);
+
+			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,Informacion.class.getName());
+//			String listaParam = "[['01','AAAAA'],['02','BBBBB']]";
+			this.escribirTextoSalida(response, listaParam);
+
+		} catch (RuntimeException e) {
+			logger.error("[listarInformacion] : " + e.getMessage());
+			this.escribirTextoSalida(response,
+					commons.mapper.Utils.getErrorMessage(e));
+		} catch (Exception e) {
+			logger.error("[listarInformacion] : " + e.getMessage());
+		}
+		return new ModelAndView();
+	}
+
 	
 }

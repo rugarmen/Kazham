@@ -89,4 +89,18 @@ public class KazhamService extends BaseService {
 		}
 	}
 	
+	public void listarInformacion(Informacion param) {
+		java.sql.Connection conn = super.getConnection();
+		try {
+			kazhamDao.listarInformacion(conn, param);
+		} catch (RuntimeException e) {
+			JdbcHelper.rollback(conn);
+			throw new RuntimeException("" + e, e);
+
+		} finally {
+			JdbcHelper.commit(conn);
+			JdbcHelper.close(conn, null, null, null, null);
+		}
+	}
+	
 }
