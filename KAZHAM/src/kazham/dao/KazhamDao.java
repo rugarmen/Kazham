@@ -1,6 +1,8 @@
 package kazham.dao;
 
 import java.sql.Connection;
+
+import kazham.bean.PeriodoMes;
 import kazham.bean.Usuario;
 
 
@@ -21,6 +23,7 @@ public interface KazhamDao  {
 
     void guardarDato(Connection conn, Usuario param);
   
+    void listarPeriodo(Connection conn, PeriodoMes param);
 }
 
 

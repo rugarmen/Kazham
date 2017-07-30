@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 import kazham.bean.ListaCorreoGenerico;
 import kazham.bean.ListaLogAuditoria;
-import kazham.bean.ListaParametro;
+import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
 import kazham.bean.LstLog;
@@ -26,6 +26,7 @@ import kazham.bean.MntConstante;
 import kazham.bean.MntMailLogCursor;
 import kazham.bean.MntParametro;
 import kazham.bean.MntTipparametro;
+import kazham.bean.PeriodoMes;
 import kazham.bean.RegUsuarioxOpcion;
 import kazham.bean.TipoCambio;
 import kazham.bean.Usuario;
@@ -89,7 +90,27 @@ public class KazhamDaoImp implements KazhamDao {
 	    	    
   }
     	
-	  
+	
+  public void listarPeriodo(Connection conn, PeriodoMes param){
+	    CallableStatement cs=null;
+
+	    try {
+		      cs=conn.prepareCall("{call " + OWNER + ".PQ_KAZ_USUARIO.sp_mnt_usuario(?,?,?,?)}");
+		      
+//		      commons.util.JdbcHelper.setString(cs, 1, param.getIdeusuario());
+//		      commons.util.JdbcHelper.setString(cs, 2, param.getName());
+//		      commons.util.JdbcHelper.setString(cs, 3, param.getEmail());
+//		      commons.util.JdbcHelper.setString(cs, 4, param.getPassword());
+		      cs.execute();
+		      //param.setIdetippar(cs.getString(1));
+
+		    } catch (SQLException e) {
+		      throw new RuntimeException("" + e, e);
+
+		    } finally {
+		      JdbcHelper.close(null, cs, null, null, null);
+		    }
+  	}
 }
 
 

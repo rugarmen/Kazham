@@ -5,7 +5,7 @@ import java.util.List;
 
 import kazham.bean.ListaCorreoGenerico;
 import kazham.bean.ListaLogAuditoria;
-import kazham.bean.ListaParametro;
+import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
 import kazham.bean.LstLog;
 import kazham.bean.LstParametro;
@@ -42,7 +42,7 @@ public interface UtilDao  {
   
   void initUser(Connection conn, String usuario, JSONObject jo);
   
-  void listaParametro(Connection conn, ListaParametro param);
+  void listaParametro(Connection conn, Periodo param);
 
   void lstParametro(Connection conn, LstParametro param);
 

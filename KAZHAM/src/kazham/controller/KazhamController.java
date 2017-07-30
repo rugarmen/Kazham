@@ -11,22 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kazham.bean.ListaLogAuditoria;
-import kazham.bean.ListaParametro;
 import kazham.bean.LstConstante;
-import kazham.bean.LstLog;
-import kazham.bean.LstParametro;
-import kazham.bean.LstTipparametro;
-import kazham.bean.MntCasillaCorreo;
-import kazham.bean.MntConstante;
-import kazham.bean.MntParametro;
-import kazham.bean.MntTipparametro;
-import kazham.bean.RegUsuarioxOpcion;
+import kazham.bean.PeriodoMes;
+
 import kazham.bean.Usuario;
-import kazham.bean.ValCfgTippar;
-import kazham.commons.CommonUtil;
+
 import kazham.commons.Constants;
-import kazham.inisesion.bean.BsqUsuario;
 import kazham.inisesion.commons.CommonsHelper;
 import kazham.inisesion.service.InisesionService;
 import kazham.service.KazhamService;
@@ -118,7 +108,35 @@ public class KazhamController extends BaseController {
 		return usuarioLogueado; 
 //		this.escribirTextoSalida(response, usuarioLogueado);
 	}
-	// [FIN - HA - 09/08/2013]
+
+	/**
+	 * Método que permite obtener el usuario logueado a la aplicación
+	 * @param request permite obtener el contexto del aplicativo
+	 * @param response Permite enviar la respuesta
+	 */
+	@RequestMapping("/listarPeriodo")
+	public ModelAndView listarPeriodo(HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		PeriodoMes periodomes;
+
+		try {
+			periodomes = new PeriodoMes(request.getParameterMap());
+			kazhamService.listarPeriodo(periodomes);
+
+//			String listaPeriodo = commons.web.UtilWeb.listaToArrayJavaScript(periodomes.getCursor(), null,"kazham.bean.PeriodoMes");
+			String listaPeriodo = "[['01','Enero'],['02','Febrero']]";
+			this.escribirTextoSalida(response, listaPeriodo);
+
+		} catch (RuntimeException e) {
+			logger.error("[listarPeriodo] : " + e.getMessage());
+			this.escribirTextoSalida(response,
+					commons.mapper.Utils.getErrorMessage(e));
+		} catch (Exception e) {
+			logger.error("[listarPeriodo] : " + e.getMessage());
+		}
+		return new ModelAndView();
+	}
 
 	
 }

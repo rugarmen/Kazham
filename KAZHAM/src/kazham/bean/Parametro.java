@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Date;
 import commons.mapper.ResourceManager;
 
-public class ListaParametro implements Serializable {
+public class Parametro implements Serializable {
 
   /**
   *
@@ -15,9 +15,9 @@ public class ListaParametro implements Serializable {
   private String idetippar;
   private List cursor;
 
-  public ListaParametro() {}
+  public Parametro() {}
 
-  public ListaParametro(Map map) throws Exception {
+  public Parametro(Map map) throws Exception {
     ResourceManager.populateDtoFromMap(this, map);
   }
 

@@ -27,7 +27,7 @@ import javax.naming.NamingException;
 
 import kazham.bean.ListaCorreoGenerico;
 import kazham.bean.ListaLogAuditoria;
-import kazham.bean.ListaParametro;
+import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
 import kazham.bean.LstLog;
 import kazham.bean.LstParametro;
@@ -108,7 +108,7 @@ public class UtilService extends BaseService {
 		}
 	}
 
-	public void listaParametro(ListaParametro param) {
+	public void listaParametro(Periodo param) {
 		java.sql.Connection conn = super.getConnection();
 		try {
 			utilDao.listaParametro(conn, param);

@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 import kazham.bean.ListaCorreoGenerico;
 import kazham.bean.ListaLogAuditoria;
-import kazham.bean.ListaParametro;
+import kazham.bean.Periodo;
 import kazham.bean.LstConstante;
 import kazham.bean.LstConstanteCursor;
 import kazham.bean.LstLog;
@@ -165,7 +165,7 @@ public class UtilDaoImp implements UtilDao {
 	    }
   }
   
-  public void listaParametro(Connection conn, ListaParametro param) {
+  public void listaParametro(Connection conn, Periodo param) {
     CallableStatement cs=null;
     ResultSet rs=null;
 
