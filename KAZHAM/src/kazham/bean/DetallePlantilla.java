@@ -1,6 +1,7 @@
 package kazham.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -13,21 +14,21 @@ public class DetallePlantilla implements Serializable {
   **/
   private static final long serialVersionUID = 1L;
 
-  private Double idedetplantilla;
+  private BigDecimal idedetplantilla;
   private String descdetplantilla;
-  private Double ideunidad;
-  private Double ideconcepto;
-  private Double idemineral;
+  private BigDecimal ideunidad;
+  private BigDecimal ideconcepto;
+  private BigDecimal idemineral;
   private Double monto_psp;
   private Double monto_real;
   private String indcalculo;
   private String formula;
   private String annio;
   private int orden;
-  private Double ideplantilla;
+  private BigDecimal ideplantilla;
   private String descplantilla;
-  private Double ideempresa;
-  private Double idecomplantilla;
+  private BigDecimal ideempresa;
+  private BigDecimal idecomplantilla;
   private List cursor;
   
   public DetallePlantilla() {}
@@ -36,11 +37,11 @@ public class DetallePlantilla implements Serializable {
     ResourceManager.populateDtoFromMap(this, map);
   }
 
-public Double getIdedetplantilla() {
+public BigDecimal getIdedetplantilla() {
 	return idedetplantilla;
 }
 
-public void setIdedetplantilla(Double idedetplantilla) {
+public void setIdedetplantilla(BigDecimal idedetplantilla) {
 	this.idedetplantilla = idedetplantilla;
 }
 
@@ -52,27 +53,27 @@ public void setDescdetplantilla(String descdetplantilla) {
 	this.descdetplantilla = descdetplantilla;
 }
 
-public Double getIdeunidad() {
+public BigDecimal getIdeunidad() {
 	return ideunidad;
 }
 
-public void setIdeunidad(Double ideunidad) {
+public void setIdeunidad(BigDecimal ideunidad) {
 	this.ideunidad = ideunidad;
 }
 
-public Double getIdeconcepto() {
+public BigDecimal getIdeconcepto() {
 	return ideconcepto;
 }
 
-public void setIdeconcepto(Double ideconcepto) {
+public void setIdeconcepto(BigDecimal ideconcepto) {
 	this.ideconcepto = ideconcepto;
 }
 
-public Double getIdemineral() {
+public BigDecimal getIdemineral() {
 	return idemineral;
 }
 
-public void setIdemineral(Double idemineral) {
+public void setIdemineral(BigDecimal idemineral) {
 	this.idemineral = idemineral;
 }
 
@@ -124,11 +125,11 @@ public void setOrden(int orden) {
 	this.orden = orden;
 }
 
-public Double getIdeplantilla() {
+public BigDecimal getIdeplantilla() {
 	return ideplantilla;
 }
 
-public void setIdeplantilla(Double ideplantilla) {
+public void setIdeplantilla(BigDecimal ideplantilla) {
 	this.ideplantilla = ideplantilla;
 }
 
@@ -140,19 +141,19 @@ public void setDescplantilla(String descplantilla) {
 	this.descplantilla = descplantilla;
 }
 
-public Double getIdeempresa() {
+public BigDecimal getIdeempresa() {
 	return ideempresa;
 }
 
-public void setIdeempresa(Double ideempresa) {
+public void setIdeempresa(BigDecimal ideempresa) {
 	this.ideempresa = ideempresa;
 }
 
-public Double getIdecomplantilla() {
+public BigDecimal getIdecomplantilla() {
 	return idecomplantilla;
 }
 
-public void setIdecomplantilla(Double idecomplantilla) {
+public void setIdecomplantilla(BigDecimal idecomplantilla) {
 	this.idecomplantilla = idecomplantilla;
 }
 

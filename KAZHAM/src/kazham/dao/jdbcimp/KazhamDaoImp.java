@@ -155,7 +155,7 @@ public class KazhamDaoImp implements KazhamDao {
 
 	    try {
 		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_PLANTILLA(?,?)}");
-		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdeempresa());
+		      commons.util.JdbcHelper.setBigDecimal(cs, 1, param.getIdeempresa());
 		      cs.registerOutParameter(2, OracleTypes.CURSOR);
 		      cs.execute();
 		      
@@ -177,7 +177,7 @@ public class KazhamDaoImp implements KazhamDao {
 
 	    try {
 		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_COMPLANTILLA(?,?)}");
-		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdeplantilla());
+		      commons.util.JdbcHelper.setBigDecimal(cs, 1, param.getIdeplantilla());
 		      cs.registerOutParameter(2, OracleTypes.CURSOR);
 		      cs.execute();
 		      
@@ -199,7 +199,7 @@ public class KazhamDaoImp implements KazhamDao {
 
 	    try {
 		      cs=conn.prepareCall("{call " + OWNER + ".PQ_MIN_LISTADO.SP_LST_DETPLANTILLA(?,?)}");
-		      commons.util.JdbcHelper.setDouble(cs, 1, param.getIdecomplantilla());
+		      commons.util.JdbcHelper.setBigDecimal(cs, 1, param.getIdecomplantilla());
 		      cs.registerOutParameter(2, OracleTypes.CURSOR);
 		      cs.execute();
 		      

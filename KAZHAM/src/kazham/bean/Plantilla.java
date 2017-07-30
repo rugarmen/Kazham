@@ -1,6 +1,7 @@
 package kazham.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -13,9 +14,9 @@ public class Plantilla implements Serializable {
   **/
   private static final long serialVersionUID = 1L;
   
-  private Double ideplantilla;
+  private BigDecimal ideplantilla;
   private String descplantilla;
-  private Double ideempresa;
+  private BigDecimal ideempresa;
   private List cursor;
 
   public Plantilla() {}
@@ -24,11 +25,11 @@ public class Plantilla implements Serializable {
     ResourceManager.populateDtoFromMap(this, map);
   }
 
-public Double getIdeplantilla() {
+public BigDecimal getIdeplantilla() {
 	return ideplantilla;
 }
 
-public void setIdeplantilla(Double ideplantilla) {
+public void setIdeplantilla(BigDecimal ideplantilla) {
 	this.ideplantilla = ideplantilla;
 }
 
@@ -40,11 +41,11 @@ public void setDescplantilla(String descplantilla) {
 	this.descplantilla = descplantilla;
 }
 
-public Double getIdeempresa() {
+public BigDecimal getIdeempresa() {
 	return ideempresa;
 }
 
-public void setIdeempresa(Double ideempresa) {
+public void setIdeempresa(BigDecimal ideempresa) {
 	this.ideempresa = ideempresa;
 }
 
@@ -55,6 +56,7 @@ public List getCursor() {
 public void setCursor(List cursor) {
 	this.cursor = cursor;
 }
+
 
 }
 

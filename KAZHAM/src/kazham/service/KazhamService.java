@@ -138,6 +138,7 @@ public class KazhamService extends BaseService {
 		java.sql.Connection conn = super.getConnection();
 		try {
 			kazhamDao.listarDetallePlantilla(conn, param);
+			
 		} catch (RuntimeException e) {
 			JdbcHelper.rollback(conn);
 			throw new RuntimeException("" + e, e);

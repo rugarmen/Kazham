@@ -170,18 +170,25 @@
                       <form class="col s12" action="kazham.do?method=guardarDato" method="POST">
                         <div class="row">
                           <div class="input-field col s12">
-                            <select id="periodo" name="periodo">
+                            <!--  <select id="periodo" name="periodo" v-on:load="load('ver')">
 	                          <option value="" disabled="" selected="">Selecione el periodo
 	                          <option value="1" v-model="periodo">01
 	                          <option value="2">02
 	                          <option value="3">03
-	                        </select>
+	                        </select> -->
+	                        <select v-model="selected" id="periodo" name="periodo">
+  <option v-for="option in options" v-bind:value="option.value">
+    {{ option.text }}
+  </option>
+</select>
                             <label id="lblperiodo" for="periodo">Periodo (Mes): </label>
                           </div>  
                         </div>
+                        
+
                         <div class="row">
                           <div class="input-field col s12">
-                            <select id="descripcion" name="descripcion">
+                            <select id="descripcion" name="descripcion" >
 	                          <option value="" disabled="" selected="">Selecione la descripción
 	                          <option value="1" v-model="mina">01
 	                          <option value="2">02
@@ -248,14 +255,81 @@
     ================================================ -->
     
     <!-- jQuery Library -->
+    
     <script type="text/javascript" src="js\plugins\jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
     <script type="text/javascript" src="js\materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="js\plugins\perfect-scrollbar\perfect-scrollbar.min.js"></script>
 	<script type="text/javascript" src="js\plugins.min.js"></script>
+	<script type="text/javascript"  src="js\periodo.js"></script>
     <script>
+    
+    /*data: {
+	    selected: 'A',
+	    options: [
+	      { text: 'One', value: 'A' },
+	      { text: 'Two', value: 'B' },
+	      { text: 'Three', value: 'C' }
+	    ]
+	  }*/
 
+	  /*(function () {
+		  this.$http.post('kazham.do?method=listarPeriodo',{
+          }).then(function(response){
+              
+              var jsonData = {}, jsonResult = {};
+              var arrResult = [];
+              
+              for(var i=0; i<response.data.length; i++){
+              	arrResult = [];
+              	arrResult.push({value: response.data[i][0], text: response.data[i][1]});
+              }
+              
+              jsonResult = {options:arrResult};
+              this.json2 = jsonResult;
+              
+          }, function(){
+              alert('Error!');
+          });
+		  
+		}());*/
+  
+		this.vmCmb = new Vue({
+			  el: '#periodo',
+			  scope:this,
+			  data : function (){
+				  
+				 /* this.$http.post('kazham.do?method=listarPeriodo',{
+	                }).then(function(response){
+	                    
+	                    var jsonData = {}, jsonResult = {};
+	                    var arrResult = [];
+	                    
+	                    for(var i=0; i<response.data.length; i++){
+	                    	arrResult.push({value: response.data[i][0], text: response.data[i][1]});
+	                    }
+	                    
+	                    jsonResult = {options:arrResult};
+	                    this.json2 = jsonResult;
+	                    
+	                }, function(){
+	                    alert('Error!');
+	                });*/
+	                
+				  var json = {
+					
+						    options: [
+						      { text: 'One', value: 'A' },
+						      { text: 'Two', value: 'B' },
+						      { text: 'Three', value: 'C' }
+						    ]
+						  };
+				  return json;
+			  }
+			});    
+        
+	    
         var vm = new Vue({
           el: '#basic-form',
           data: {

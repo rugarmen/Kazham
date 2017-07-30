@@ -1,6 +1,7 @@
 package kazham.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.List;
 import java.util.Date;
@@ -13,21 +14,21 @@ public class ComponentePlantilla implements Serializable {
   **/
   private static final long serialVersionUID = 1L;
   
-  private Double idecompplantilla;
-  private String desccompplantilla;
-  private Double ideunidad;
-  private Double ideconcepto;
-  private Double idemineral;
+  private BigDecimal idecomplantilla;
+  private String desccomplantilla;
+  private int orden;
+  private BigDecimal ideunidad;
+  private BigDecimal ideconcepto;
+  private BigDecimal idemineral;
   private Double monto_psp;
   private Double monto_real;
   private String indcalculo;
   private String formula;
   private String annio;
-  private int orden;
-  private Double ideplantilla;
+  
+  private BigDecimal ideplantilla;
   private String descplantilla;
-  private Double ideempresa;
-  private Double idecomplantilla;
+  private BigDecimal ideempresa;
   private List cursor;
   
 
@@ -37,43 +38,51 @@ public class ComponentePlantilla implements Serializable {
     ResourceManager.populateDtoFromMap(this, map);
   }
 
-public Double getIdecompplantilla() {
-	return idecompplantilla;
+public BigDecimal getIdecomplantilla() {
+	return idecomplantilla;
 }
 
-public void setIdecompplantilla(Double idecompplantilla) {
-	this.idecompplantilla = idecompplantilla;
+public void setIdecomplantilla(BigDecimal idecomplantilla) {
+	this.idecomplantilla = idecomplantilla;
 }
 
-public String getDesccompplantilla() {
-	return desccompplantilla;
+public String getDesccomplantilla() {
+	return desccomplantilla;
 }
 
-public void setDesccompplantilla(String desccompplantilla) {
-	this.desccompplantilla = desccompplantilla;
+public void setDesccomplantilla(String desccomplantilla) {
+	this.desccomplantilla = desccomplantilla;
 }
 
-public Double getIdeunidad() {
+public int getOrden() {
+	return orden;
+}
+
+public void setOrden(int orden) {
+	this.orden = orden;
+}
+
+public BigDecimal getIdeunidad() {
 	return ideunidad;
 }
 
-public void setIdeunidad(Double ideunidad) {
+public void setIdeunidad(BigDecimal ideunidad) {
 	this.ideunidad = ideunidad;
 }
 
-public Double getIdeconcepto() {
+public BigDecimal getIdeconcepto() {
 	return ideconcepto;
 }
 
-public void setIdeconcepto(Double ideconcepto) {
+public void setIdeconcepto(BigDecimal ideconcepto) {
 	this.ideconcepto = ideconcepto;
 }
 
-public Double getIdemineral() {
+public BigDecimal getIdemineral() {
 	return idemineral;
 }
 
-public void setIdemineral(Double idemineral) {
+public void setIdemineral(BigDecimal idemineral) {
 	this.idemineral = idemineral;
 }
 
@@ -117,19 +126,11 @@ public void setAnnio(String annio) {
 	this.annio = annio;
 }
 
-public int getOrden() {
-	return orden;
-}
-
-public void setOrden(int orden) {
-	this.orden = orden;
-}
-
-public Double getIdeplantilla() {
+public BigDecimal getIdeplantilla() {
 	return ideplantilla;
 }
 
-public void setIdeplantilla(Double ideplantilla) {
+public void setIdeplantilla(BigDecimal ideplantilla) {
 	this.ideplantilla = ideplantilla;
 }
 
@@ -141,20 +142,12 @@ public void setDescplantilla(String descplantilla) {
 	this.descplantilla = descplantilla;
 }
 
-public Double getIdeempresa() {
+public BigDecimal getIdeempresa() {
 	return ideempresa;
 }
 
-public void setIdeempresa(Double ideempresa) {
+public void setIdeempresa(BigDecimal ideempresa) {
 	this.ideempresa = ideempresa;
-}
-
-public Double getIdecomplantilla() {
-	return idecomplantilla;
-}
-
-public void setIdecomplantilla(Double idecomplantilla) {
-	this.idecomplantilla = idecomplantilla;
 }
 
 public List getCursor() {

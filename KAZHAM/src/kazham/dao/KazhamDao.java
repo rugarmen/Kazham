@@ -31,7 +31,7 @@ public interface KazhamDao  {
     
     void listarComponentePlantilla(Connection conn, ComponentePlantilla param);
     
-    void listarComponentePlantilla(Connection conn, DetallePlantilla param);
+    void listarDetallePlantilla(Connection conn, DetallePlantilla param);
 }
 
 

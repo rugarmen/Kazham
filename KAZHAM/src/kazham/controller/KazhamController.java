@@ -1,6 +1,7 @@
 package kazham.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -199,6 +200,10 @@ public class KazhamController extends BaseController {
 
 		try {
 			param = new Plantilla(request.getParameterMap());
+			BigDecimal ideEmpresa = new BigDecimal(1);
+				
+			param.setIdeempresa(ideEmpresa);
+			
 			kazhamService.listarPlantilla(param);
 
 			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,Plantilla.class.getName());
@@ -223,6 +228,12 @@ public class KazhamController extends BaseController {
 
 		try {
 			param = new ComponentePlantilla(request.getParameterMap());
+			
+			BigDecimal idePlantilla = new BigDecimal(1);
+			
+			param.setIdeplantilla(idePlantilla);
+			
+			
 			kazhamService.listarComponentePlantilla(param);
 
 			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,ComponentePlantilla.class.getName());
@@ -247,6 +258,11 @@ public class KazhamController extends BaseController {
 
 		try {
 			param = new DetallePlantilla(request.getParameterMap());
+			
+			BigDecimal ideComPlantilla = new BigDecimal(1);
+			
+			param.setIdecomplantilla(ideComPlantilla);
+						
 			kazhamService.listarDetallePlantilla(param);
 
 			String listaParam = commons.web.UtilWeb.listaToArrayJavaScript(param.getCursor(), null,DetallePlantilla.class.getName());
